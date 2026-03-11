@@ -1,0 +1,8 @@
+# Robots.txt for Versatile Home Solutions
+# https://versatilehomesolutions.ca
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://versatilehomesolutions.ca/sitemap.xml

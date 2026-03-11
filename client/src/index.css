@@ -1,0 +1,282 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Maritime Craftsman Design System
+ * Primary: Deep Navy (#1a365d) - Atlantic trust
+ * Secondary: Warm Cedar (#8B5A2B) - Natural wood
+ * Accent: Weathered Steel (#6B7280) - Metal roofing
+ * Background: Warm Off-white (#FAF8F5) - Natural canvas
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom brand colors */
+  --color-navy: oklch(0.28 0.06 250);
+  --color-navy-light: oklch(0.35 0.06 250);
+  --color-navy-dark: oklch(0.22 0.06 250);
+  --color-cedar: oklch(0.50 0.10 60);
+  --color-cedar-light: oklch(0.60 0.08 60);
+  --color-steel: oklch(0.55 0.02 250);
+  --color-cream: oklch(0.98 0.01 90);
+  --color-warm-white: oklch(0.99 0.005 90);
+}
+
+:root {
+  --radius: 0.5rem;
+  
+  /* Maritime Craftsman Light Theme */
+  --background: oklch(0.98 0.008 90);
+  --foreground: oklch(0.25 0.03 250);
+  
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.25 0.03 250);
+  
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.03 250);
+  
+  /* Deep Navy Primary */
+  --primary: oklch(0.28 0.06 250);
+  --primary-foreground: oklch(0.98 0.005 90);
+  
+  /* Warm Cedar Secondary */
+  --secondary: oklch(0.50 0.10 60);
+  --secondary-foreground: oklch(0.98 0.005 90);
+  
+  --muted: oklch(0.94 0.01 90);
+  --muted-foreground: oklch(0.45 0.02 250);
+  
+  /* Steel Grey Accent */
+  --accent: oklch(0.55 0.02 250);
+  --accent-foreground: oklch(0.98 0.005 90);
+  
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  
+  --border: oklch(0.88 0.01 90);
+  --input: oklch(0.88 0.01 90);
+  --ring: oklch(0.28 0.06 250);
+  
+  --chart-1: oklch(0.28 0.06 250);
+  --chart-2: oklch(0.50 0.10 60);
+  --chart-3: oklch(0.55 0.02 250);
+  --chart-4: oklch(0.40 0.08 60);
+  --chart-5: oklch(0.35 0.06 250);
+  
+  --sidebar: oklch(0.28 0.06 250);
+  --sidebar-foreground: oklch(0.98 0.005 90);
+  --sidebar-primary: oklch(0.50 0.10 60);
+  --sidebar-primary-foreground: oklch(0.98 0.005 90);
+  --sidebar-accent: oklch(0.35 0.06 250);
+  --sidebar-accent-foreground: oklch(0.98 0.005 90);
+  --sidebar-border: oklch(0.35 0.06 250);
+  --sidebar-ring: oklch(0.50 0.10 60);
+}
+
+.dark {
+  --background: oklch(0.18 0.03 250);
+  --foreground: oklch(0.95 0.005 90);
+  
+  --card: oklch(0.22 0.03 250);
+  --card-foreground: oklch(0.95 0.005 90);
+  
+  --popover: oklch(0.22 0.03 250);
+  --popover-foreground: oklch(0.95 0.005 90);
+  
+  --primary: oklch(0.55 0.08 250);
+  --primary-foreground: oklch(0.98 0.005 90);
+  
+  --secondary: oklch(0.55 0.10 60);
+  --secondary-foreground: oklch(0.98 0.005 90);
+  
+  --muted: oklch(0.28 0.03 250);
+  --muted-foreground: oklch(0.70 0.02 250);
+  
+  --accent: oklch(0.45 0.02 250);
+  --accent-foreground: oklch(0.98 0.005 90);
+  
+  --destructive: oklch(0.60 0.20 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  
+  --border: oklch(0.30 0.03 250);
+  --input: oklch(0.30 0.03 250);
+  --ring: oklch(0.55 0.08 250);
+  
+  --chart-1: oklch(0.55 0.08 250);
+  --chart-2: oklch(0.55 0.10 60);
+  --chart-3: oklch(0.50 0.02 250);
+  --chart-4: oklch(0.50 0.08 60);
+  --chart-5: oklch(0.45 0.06 250);
+  
+  --sidebar: oklch(0.22 0.03 250);
+  --sidebar-foreground: oklch(0.95 0.005 90);
+  --sidebar-primary: oklch(0.55 0.10 60);
+  --sidebar-primary-foreground: oklch(0.98 0.005 90);
+  --sidebar-accent: oklch(0.28 0.03 250);
+  --sidebar-accent-foreground: oklch(0.95 0.005 90);
+  --sidebar-border: oklch(0.30 0.03 250);
+  --sidebar-ring: oklch(0.55 0.10 60);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+  
+  /* Diagonal section dividers - roof pitch style */
+  .diagonal-top {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+    margin-top: -4rem;
+    padding-top: 6rem;
+  }
+  
+  .diagonal-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    padding-bottom: 4rem;
+  }
+  
+  /* Wood grain texture overlay */
+  .wood-texture {
+    position: relative;
+  }
+  
+  .wood-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  
+  /* Blueprint-style corner marks */
+  .blueprint-corner {
+    position: relative;
+  }
+  
+  .blueprint-corner::before,
+  .blueprint-corner::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: currentColor;
+    opacity: 0.3;
+  }
+  
+  .blueprint-corner::before {
+    top: 0;
+    left: 0;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+  
+  .blueprint-corner::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+  
+  /* Accent font for labels */
+  .font-accent {
+    font-family: 'Oswald', system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
