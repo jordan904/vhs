@@ -317,19 +317,10 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-[oklch(0.60_0.08_60)] shrink-0" />
                   <a
-                    href="tel:+1XXXXXXXXXX"
+                    href="tel:+19028245333"
                     className="text-white/70 hover:text-white transition-colors text-sm"
                   >
-                    (XXX) XXX-XXXX
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-[oklch(0.60_0.08_60)] shrink-0" />
-                  <a
-                    href="mailto:info@versatilehomesolutions.ca"
-                    className="text-white/70 hover:text-white transition-colors text-sm"
-                  >
-                    info@versatilehomesolutions.ca
+                    (902) 824-5333
                   </a>
                 </div>
               </div>

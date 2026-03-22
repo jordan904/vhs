@@ -103,11 +103,15 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate form submission (replace with actual endpoint)
     try {
-      // In production, this would POST to /api/estimate
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+      const res = await fetch("/api/estimate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to submit");
+
       setIsSubmitted(true);
       toast.success("Your estimate request has been submitted!");
     } catch {
@@ -482,19 +486,10 @@ export default function Contact() {
                       <div className="flex items-center gap-3">
                         <Phone className="h-5 w-5 text-[oklch(0.50_0.10_60)] shrink-0" />
                         <a
-                          href="tel:+1XXXXXXXXXX"
+                          href="tel:+19028245333"
                           className="text-foreground hover:text-[oklch(0.50_0.10_60)] transition-colors"
                         >
-                          (XXX) XXX-XXXX
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Mail className="h-5 w-5 text-[oklch(0.50_0.10_60)] shrink-0" />
-                        <a
-                          href="mailto:info@versatilehomesolutions.ca"
-                          className="text-foreground hover:text-[oklch(0.50_0.10_60)] transition-colors text-sm"
-                        >
-                          info@versatilehomesolutions.ca
+                          (902) 824-5333
                         </a>
                       </div>
                     </div>

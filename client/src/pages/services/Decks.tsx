@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "Do I need a permit for a deck?",
     answer:
-      "Most deck projects require a building permit. We handle the permit process as part of our service, ensuring your deck meets all local building codes and regulations.",
+      "Most deck projects require a building permit. We ensure your deck meets all local building codes and regulations.",
   },
   {
     question: "How do I maintain my new deck?",
