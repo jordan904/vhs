@@ -68,7 +68,7 @@ export default function Decks() {
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="glass hero-slide-down inline-block px-4 py-1.5 rounded-full font-accent text-[oklch(0.68_0.14_85)] text-sm tracking-wider mb-4">
+            <p className="glass hero-slide-down inline-block px-4 py-1.5 rounded-full font-accent text-[oklch(0.72_0.16_90)] text-sm tracking-wider mb-4">
               Our Services
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -140,7 +140,7 @@ export default function Decks() {
                   "Final walkthrough and care instructions",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-[oklch(0.55_0.14_85)] shrink-0 mt-0.5" />
+                    <CheckCircle className="h-5 w-5 text-[oklch(0.58_0.16_90)] shrink-0 mt-0.5" />
                     <span className="text-foreground">{item}</span>
                   </li>
                 ))}
@@ -197,7 +197,7 @@ export default function Decks() {
                       <li>
                         <Link
                           href="/services/fences"
-                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.55_0.14_85)] transition-colors"
+                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.58_0.16_90)] transition-colors"
                         >
                           Fences →
                         </Link>
@@ -205,7 +205,7 @@ export default function Decks() {
                       <li>
                         <Link
                           href="/services/sheds-outbuildings"
-                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.55_0.14_85)] transition-colors"
+                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.58_0.16_90)] transition-colors"
                         >
                           Sheds & Outbuildings →
                         </Link>
@@ -213,7 +213,7 @@ export default function Decks() {
                       <li>
                         <Link
                           href="/services"
-                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.55_0.14_85)] transition-colors"
+                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.58_0.16_90)] transition-colors"
                         >
                           View All Services →
                         </Link>
@@ -264,7 +264,7 @@ export default function Decks() {
             <Button
               asChild
               size="lg"
-              className="btn-3d-white text-[oklch(0.55_0.14_85)] font-semibold text-lg px-10"
+              className="btn-3d-white text-[oklch(0.58_0.16_90)] font-semibold text-lg px-10"
             >
               <Link href="/contact">
                 Request a Free Estimate

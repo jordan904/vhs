@@ -158,7 +158,7 @@ export default function Contact() {
           </div>
           <div className="container relative z-10">
             <div className="max-w-2xl">
-              <p className="font-accent text-[oklch(0.68_0.14_85)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
+              <p className="font-accent text-[oklch(0.72_0.16_90)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
                 Thank You
               </p>
               <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -178,7 +178,7 @@ export default function Contact() {
               <h2 className="text-3xl font-bold text-foreground mb-4">
                 We've Received Your Estimate Request
               </h2>
-              <p className="text-[oklch(0.55_0.14_85)] text-xl font-semibold mb-4">
+              <p className="text-[oklch(0.58_0.16_90)] text-xl font-semibold mb-4">
                 We will be in touch shortly!
               </p>
               <p className="text-muted-foreground text-lg mb-8">
@@ -196,7 +196,7 @@ export default function Contact() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-[oklch(0.55_0.14_85)] text-[oklch(0.55_0.14_85)] hover:bg-[oklch(0.55_0.14_85)] hover:text-white"
+                  className="border-[oklch(0.58_0.16_90)] text-[oklch(0.58_0.16_90)] hover:bg-[oklch(0.58_0.16_90)] hover:text-white"
                 >
                   <Link href="/services">Explore Our Services</Link>
                 </Button>
@@ -222,7 +222,7 @@ export default function Contact() {
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.68_0.14_85)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
+            <p className="font-accent text-[oklch(0.72_0.16_90)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
               Get In Touch
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -462,7 +462,7 @@ export default function Contact() {
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full bg-[oklch(0.55_0.14_85)] hover:bg-[oklch(0.48_0.14_85)] text-white font-semibold btn-3d"
+                      className="w-full bg-[oklch(0.58_0.16_90)] hover:bg-[oklch(0.52_0.16_90)] text-white font-semibold btn-3d"
                     >
                       {isSubmitting ? (
                         "Submitting..."
@@ -489,7 +489,7 @@ export default function Contact() {
                     </h3>
                     <div className="space-y-4">
                       <div className="flex items-start gap-3 hover-slide-right">
-                        <MapPin className="h-5 w-5 text-[oklch(0.55_0.14_85)] shrink-0 mt-0.5" />
+                        <MapPin className="h-5 w-5 text-[oklch(0.58_0.16_90)] shrink-0 mt-0.5" />
                         <div>
                           <p className="font-medium text-foreground">
                             Versatile Home Solutions
@@ -502,10 +502,10 @@ export default function Contact() {
                         </div>
                       </div>
                       <div className="flex items-center gap-3 hover-slide-right">
-                        <Phone className="h-5 w-5 text-[oklch(0.55_0.14_85)] shrink-0" />
+                        <Phone className="h-5 w-5 text-[oklch(0.58_0.16_90)] shrink-0" />
                         <a
                           href="tel:+19028245333"
-                          className="text-foreground hover:text-[oklch(0.55_0.14_85)] transition-colors"
+                          className="text-foreground hover:text-[oklch(0.58_0.16_90)] transition-colors"
                         >
                           (902) 824-5333
                         </a>

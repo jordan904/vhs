@@ -14,6 +14,7 @@ import Decks from "./pages/services/Decks";
 import ShedsOutbuildings from "./pages/services/ShedsOutbuildings";
 import Fences from "./pages/services/Fences";
 import GarbageBinsGardenBoxes from "./pages/services/GarbageBinsGardenBoxes";
+import LvpFlooring from "./pages/services/LvpFlooring";
 import Process from "./pages/Process";
 import ServiceArea from "./pages/ServiceArea";
 import Contact from "./pages/Contact";
@@ -31,6 +32,7 @@ function Router() {
         <Route path="/services/sheds-outbuildings" component={ShedsOutbuildings} />
         <Route path="/services/fences" component={Fences} />
         <Route path="/services/garbage-bins-garden-boxes" component={GarbageBinsGardenBoxes} />
+        <Route path="/services/lvp-flooring" component={LvpFlooring} />
         <Route path="/process" component={Process} />
         <Route path="/service-area" component={ServiceArea} />
         <Route path="/contact" component={Contact} />
