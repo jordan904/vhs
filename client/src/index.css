@@ -274,29 +274,34 @@
    PREMIUM SECTION BACKGROUNDS
    ============================================ */
 
-/* Light section - subtle warm radial gradient with top inner shadow */
+/* Light section - warm gradient with radial gold tint + depth */
 .bg-section-light {
   background:
-    linear-gradient(180deg, oklch(0.96 0.01 90) 0%, oklch(0.98 0.008 90) 30%, oklch(0.98 0.008 90) 70%, oklch(0.96 0.01 90) 100%);
-  box-shadow: inset 0 1px 0 oklch(0 0 0 / 0.03);
+    radial-gradient(ellipse at 50% 0%, oklch(0.96 0.02 88 / 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, oklch(0.97 0.015 250 / 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 100%, oklch(0.96 0.02 88 / 0.15) 0%, transparent 40%),
+    linear-gradient(180deg, oklch(0.955 0.012 90) 0%, oklch(0.98 0.008 90) 35%, oklch(0.98 0.008 90) 65%, oklch(0.955 0.012 90) 100%);
+  box-shadow: inset 0 1px 0 oklch(0 0 0 / 0.04), inset 0 -1px 0 oklch(0 0 0 / 0.02);
 }
 
-/* Muted section - layered gradient with subtle depth */
+/* Muted section - multi-layer gradient with visible depth */
 .bg-section-muted {
   background:
-    radial-gradient(ellipse at 20% 50%, oklch(0.95 0.015 80 / 0.4) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 50%, oklch(0.93 0.01 250 / 0.2) 0%, transparent 60%),
-    linear-gradient(180deg, oklch(0.93 0.01 90) 0%, oklch(0.95 0.01 90) 50%, oklch(0.93 0.01 90) 100%);
-  box-shadow: inset 0 1px 0 oklch(0 0 0 / 0.04), inset 0 -1px 0 oklch(0 0 0 / 0.04);
+    radial-gradient(ellipse at 15% 20%, oklch(0.94 0.025 88 / 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 80%, oklch(0.92 0.02 88 / 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, oklch(0.95 0.01 250 / 0.15) 0%, transparent 70%),
+    linear-gradient(180deg, oklch(0.92 0.012 90) 0%, oklch(0.945 0.01 90) 30%, oklch(0.945 0.01 90) 70%, oklch(0.92 0.012 90) 100%);
+  box-shadow: inset 0 2px 0 oklch(0 0 0 / 0.04), inset 0 -2px 0 oklch(0 0 0 / 0.04);
 }
 
-/* Navy section - rich gradient with depth + subtle noise */
+/* Navy section - rich multi-layer gradient with depth + noise */
 .bg-section-navy {
   background:
-    radial-gradient(ellipse at 30% 0%, oklch(0.32 0.06 250) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 100%, oklch(0.25 0.07 260) 0%, transparent 50%),
-    linear-gradient(180deg, oklch(0.30 0.06 250) 0%, oklch(0.26 0.06 250) 40%, oklch(0.24 0.06 250) 100%);
-  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.04), inset 0 -1px 0 oklch(0 0 0 / 0.2);
+    radial-gradient(ellipse at 20% -10%, oklch(0.35 0.08 250) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 110%, oklch(0.28 0.08 260) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, oklch(0.30 0.07 255 / 0.5) 0%, transparent 60%),
+    linear-gradient(180deg, oklch(0.32 0.06 250) 0%, oklch(0.26 0.06 250) 35%, oklch(0.23 0.06 250) 100%);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06), inset 0 -2px 0 oklch(0 0 0 / 0.25);
   position: relative;
 }
 
@@ -304,7 +309,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
 }
@@ -314,13 +319,14 @@
   z-index: 1;
 }
 
-/* Cedar/Gold CTA section - warm gradient with glow + top highlight */
+/* Cedar/Gold CTA section - rich warm gradient with prominent glow */
 .bg-section-cedar {
   background:
-    radial-gradient(ellipse at 50% 0%, oklch(0.58 0.14 85 / 0.5) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, oklch(0.42 0.14 85 / 0.4) 0%, transparent 60%),
-    linear-gradient(180deg, oklch(0.52 0.14 85) 0%, oklch(0.58 0.18 88) 50%, oklch(0.58 0.18 88) 100%);
-  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.12), inset 0 -1px 0 oklch(0 0 0 / 0.15);
+    radial-gradient(ellipse at 30% -20%, oklch(0.72 0.18 88 / 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 120%, oklch(0.45 0.16 88 / 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, oklch(0.60 0.18 88 / 0.3) 0%, transparent 60%),
+    linear-gradient(180deg, oklch(0.68 0.18 88) 0%, oklch(0.62 0.18 88) 35%, oklch(0.58 0.18 88) 100%);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.15), inset 0 -2px 0 oklch(0 0 0 / 0.2);
   position: relative;
 }
 
@@ -338,12 +344,14 @@
   z-index: 1;
 }
 
-/* Dark navy footer variant - deeper with vignette */
+/* Dark navy footer variant - deeper with vignette + gold accent glow */
 .bg-section-footer {
   background:
-    radial-gradient(ellipse at 50% 0%, oklch(0.25 0.06 250) 0%, transparent 70%),
-    linear-gradient(180deg, oklch(0.23 0.06 250) 0%, oklch(0.20 0.06 250) 100%);
-  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.03);
+    radial-gradient(ellipse at 20% 0%, oklch(0.28 0.07 250) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 0%, oklch(0.25 0.04 88 / 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, oklch(0.18 0.04 250) 0%, transparent 60%),
+    linear-gradient(180deg, oklch(0.24 0.06 250) 0%, oklch(0.20 0.06 250) 50%, oklch(0.18 0.05 250) 100%);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.04), inset 0 -1px 0 oklch(0 0 0 / 0.3);
 }
 
 /* ============================================
