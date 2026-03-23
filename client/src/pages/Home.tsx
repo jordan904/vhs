@@ -106,21 +106,43 @@ const galleryImages = [
 
 const testimonials = [
   {
-    quote: "Excellent work on our metal roof. Professional team, great communication, and the finished product looks fantastic.",
-    name: "Sarah M.",
-    location: "Wolfville, NS",
+    quote: "We were very pleased with not only the excellent workmanship and thought put into every aspect of our three-in-one covered deck, screenhouse, and catio structure, but also appreciated the overall good vibes and ideas this company has.",
+    name: "Susan Diane Demone",
     rating: 5,
   },
   {
-    quote: "They built us a beautiful deck that perfectly fits our home. Couldn't be happier with the quality and craftsmanship.",
-    name: "David & Karen T.",
-    location: "Kentville, NS",
+    quote: "Jordan designed and constructed a storage building for me. His work started with a thorough consultation as to exactly what my needs were. His skill and hard work resulted in an excellent building enhancing the property, and he stayed on budget and quote. Highly recommend.",
+    name: "Ron West",
     rating: 5,
   },
   {
-    quote: "From the first call to the final walkthrough, everything was professional and on time. Highly recommend!",
-    name: "Mike L.",
-    location: "Berwick, NS",
+    quote: "We were thoroughly impressed with Jordan's stellar work standard, skill set, performance and drive for constant improvement. The ability to critically self-assess the outcome of one's scope of work is something we have come to greatly appreciate.",
+    name: "CETEK Inc.",
+    rating: 5,
+  },
+  {
+    quote: "The work carried out by Jordan regarding our fence, our deck, and our tree was totally excellent in terms of both quality and cost. Plus his decision-making together with his ability to communicate is top-notch.",
+    name: "Tom Tripp",
+    rating: 5,
+  },
+  {
+    quote: "Jordan carefully planned and built my brand new loft deck. There's a real sense of pride in his work; it's clear that he treats building as an art and not just a job. Every facet of the project was executed expertly. Highly recommend.",
+    name: "Nick Selig",
+    rating: 5,
+  },
+  {
+    quote: "Jordan was professional and efficient when working on my home improvement project. I would highly recommend Versatile Home Solutions.",
+    name: "Brenda Ford",
+    rating: 5,
+  },
+  {
+    quote: "Highly recommended! Jordan did incredibly high quality work and completed everything in a timely fashion. Thanks so much!",
+    name: "Jasmine Selig",
+    rating: 5,
+  },
+  {
+    quote: "Would not hesitate to recommend Jordan! His work ethic is impressive.",
+    name: "Sherry O'Dell",
     rating: 5,
   },
 ];
@@ -565,28 +587,30 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               What Our Customers Say
             </h2>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-6 w-6 fill-[oklch(0.68_0.14_85)] text-[oklch(0.68_0.14_85)]" />
+              ))}
+            </div>
             <p className="text-muted-foreground text-lg mb-8">
-              We're proud of the relationships we build with our customers.
+              5.0 stars on Google — 8 reviews from real customers.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 fade-in-stagger">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in-stagger">
             {testimonials.map((t, i) => (
               <Card key={i} className="fade-in p-6 border card-3d-light hover:border-[oklch(0.55_0.14_85/0.3)]">
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-1 mb-3">
                   {Array.from({ length: t.rating }).map((_, si) => (
                     <Star
                       key={si}
-                      className="star-pop h-5 w-5 fill-[oklch(0.68_0.14_85)] text-[oklch(0.68_0.14_85)]"
+                      className="star-pop h-4 w-4 fill-[oklch(0.68_0.14_85)] text-[oklch(0.68_0.14_85)]"
                     />
                   ))}
                 </div>
-                <p className="text-muted-foreground italic mb-4">
+                <p className="text-muted-foreground italic text-sm mb-4 leading-relaxed">
                   "{t.quote}"
                 </p>
-                <div>
-                  <p className="font-semibold text-foreground">— {t.name}</p>
-                  <p className="text-sm text-muted-foreground">{t.location}</p>
-                </div>
+                <p className="font-semibold text-foreground text-sm">— {t.name}</p>
               </Card>
             ))}
           </div>
