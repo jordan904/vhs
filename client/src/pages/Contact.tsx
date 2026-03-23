@@ -107,21 +107,20 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://formsubmit.co/ajax/jordan@versatilehomesolutions.ca", {
+      const res = await fetch("https://formspree.io/f/mgonjzkv", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
         body: JSON.stringify({
-          _subject: `New Estimate Request from ${formData.fullName} - ${formData.service}`,
-          "Full Name": formData.fullName,
-          "Email": formData.email,
-          "Phone": formData.phone,
-          "Address": formData.address,
-          "Service": formData.service,
-          "Timeframe": formData.timeframe,
-          "Description": formData.description,
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          service: formData.service,
+          timeframe: formData.timeframe,
+          message: formData.description,
         }),
       });
 
