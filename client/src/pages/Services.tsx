@@ -95,7 +95,7 @@ export default function Services() {
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
+            <p className="font-accent text-[oklch(0.68_0.14_85)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
               Our Services
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -111,14 +111,14 @@ export default function Services() {
       </section>
 
       {/* Services List */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-section-light">
         <div className="container" ref={servicesRef}>
           <div className="space-y-12">
             {services.map((service, index) => (
               <Card
                 key={service.title}
                 className={`overflow-hidden border-0 shadow-lg card-3d fade-in ${
-                  service.featured ? "ring-2 ring-[oklch(0.50_0.10_60)]" : ""
+                  service.featured ? "ring-2 ring-[oklch(0.55_0.14_85)]" : ""
                 }`}
               >
                 <div
@@ -137,7 +137,7 @@ export default function Services() {
                       className="w-full h-full object-cover"
                     />
                     {service.featured && (
-                      <div className="absolute top-4 left-4 bg-[oklch(0.50_0.10_60)] text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                      <div className="absolute top-4 left-4 bg-[oklch(0.55_0.14_85)] text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
                         <Star className="h-4 w-4" />
                         Primary Service
                       </div>
@@ -156,7 +156,7 @@ export default function Services() {
                           key={highlight}
                           className="flex items-center gap-2 text-sm text-foreground"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.50_0.10_60)]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.55_0.14_85)]" />
                           {highlight}
                         </li>
                       ))}
@@ -174,7 +174,7 @@ export default function Services() {
                       <Button
                         asChild
                         variant="outline"
-                        className="border-[oklch(0.50_0.10_60)] text-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.50_0.10_60)] hover:text-white"
+                        className="border-[oklch(0.55_0.14_85)] text-[oklch(0.55_0.14_85)] hover:bg-[oklch(0.55_0.14_85)] hover:text-white"
                       >
                         <Link href="/contact">Get a Quote</Link>
                       </Button>
@@ -188,7 +188,7 @@ export default function Services() {
       </section>
 
       {/* Mid-page CTA */}
-      <section className="py-16 md:py-20 bg-[oklch(0.28_0.06_250)] text-white">
+      <section className="py-16 md:py-20 bg-section-navy text-white">
         <div className="container" ref={ctaRef}>
           <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -201,7 +201,7 @@ export default function Services() {
             <Button
               asChild
               size="lg"
-              className="bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold text-lg px-10 btn-3d"
+              className="bg-[oklch(0.55_0.14_85)] hover:bg-[oklch(0.48_0.14_85)] text-white font-semibold text-lg px-10 btn-3d"
             >
               <Link href="/contact">
                 Request a Free Estimate

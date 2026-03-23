@@ -24,7 +24,7 @@ export default function Marquee() {
             <span className="text-white/90 font-accent text-sm tracking-wider px-6">
               {item}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.60_0.08_60)] shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.68_0.14_85)] shrink-0" />
           </span>
         ))}
       </div>

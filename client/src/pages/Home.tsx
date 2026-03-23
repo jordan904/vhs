@@ -168,7 +168,7 @@ export default function Home() {
           <div className="max-w-2xl">
             {/* Badge with glassmorphism */}
             <div className="hero-slide-down inline-block glass rounded-full px-4 py-2 mb-6">
-              <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider">
+              <p className="font-accent text-[oklch(0.68_0.14_85)] text-sm tracking-wider">
                 Nova Scotia's Trusted Home Improvement Experts
               </p>
             </div>
@@ -239,11 +239,11 @@ export default function Home() {
       <Marquee />
 
       {/* Primary Service Spotlight - Metal Roofing */}
-      <section className="py-16 md:py-24 bg-background" ref={spotlightRef}>
+      <section className="py-16 md:py-24 bg-section-light" ref={spotlightRef}>
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1 fade-in">
-              <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
+              <p className="font-accent text-[oklch(0.55_0.14_85)] text-sm tracking-wider mb-3">
                 Our Primary Service
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -265,7 +265,7 @@ export default function Home() {
                   "Environmentally friendly and recyclable",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-[oklch(0.50_0.10_60)] shrink-0 mt-0.5" />
+                    <CheckCircle className="h-5 w-5 text-[oklch(0.55_0.14_85)] shrink-0 mt-0.5" />
                     <span className="text-foreground">{item}</span>
                   </li>
                 ))}
@@ -283,7 +283,7 @@ export default function Home() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-[oklch(0.50_0.10_60)] text-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.50_0.10_60)] hover:text-white transition-all duration-300"
+                  className="border-[oklch(0.55_0.14_85)] text-[oklch(0.55_0.14_85)] hover:bg-[oklch(0.55_0.14_85)] hover:text-white transition-all duration-300"
                 >
                   <Link href="/contact">Get a Free Quote</Link>
                 </Button>
@@ -307,10 +307,10 @@ export default function Home() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 md:py-24 bg-muted diagonal-top" ref={servicesRef}>
+      <section className="py-16 md:py-24 bg-section-muted diagonal-top" ref={servicesRef}>
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
-            <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.55_0.14_85)] text-sm tracking-wider mb-3">
               What We Do
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -347,7 +347,7 @@ export default function Home() {
                   </p>
                   <Link
                     href={service.href}
-                    className="inline-flex items-center text-[oklch(0.28_0.06_250)] font-semibold hover:text-[oklch(0.50_0.10_60)] transition-colors"
+                    className="inline-flex items-center text-[oklch(0.28_0.06_250)] font-semibold hover:text-[oklch(0.55_0.14_85)] transition-colors"
                   >
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -373,10 +373,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-background" ref={whyRef}>
+      <section className="py-16 md:py-24 bg-section-light" ref={whyRef}>
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
-            <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.55_0.14_85)] text-sm tracking-wider mb-3">
               Why Choose Us
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -411,10 +411,10 @@ export default function Home() {
       </section>
 
       {/* Process Teaser */}
-      <section className="py-16 md:py-24 bg-[oklch(0.28_0.06_250)] text-white diagonal-top" ref={processRef}>
+      <section className="py-16 md:py-24 bg-section-navy text-white diagonal-top" ref={processRef}>
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
-            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.68_0.14_85)] text-sm tracking-wider mb-3">
               How We Work
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -433,7 +433,7 @@ export default function Home() {
                 className="fade-in relative p-6 rounded-lg bg-white/5 border border-white/10 card-3d-light"
                 style={{ ["--tw-shadow-color" as string]: "transparent" }}
               >
-                <div className="text-4xl font-bold text-[oklch(0.60_0.08_60)] mb-3">
+                <div className="text-4xl font-bold text-[oklch(0.68_0.14_85)] mb-3">
                   {item.step}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{item.title}</h3>
@@ -458,11 +458,11 @@ export default function Home() {
       </section>
 
       {/* Service Area Teaser */}
-      <section className="py-16 md:py-24 bg-background" ref={areaRef}>
+      <section className="py-16 md:py-24 bg-section-light" ref={areaRef}>
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="fade-in">
-              <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
+              <p className="font-accent text-[oklch(0.55_0.14_85)] text-sm tracking-wider mb-3">
                 Where We Work
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -511,10 +511,10 @@ export default function Home() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-16 md:py-24 bg-muted" ref={galleryRef}>
+      <section className="py-16 md:py-24 bg-section-muted" ref={galleryRef}>
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
-            <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.55_0.14_85)] text-sm tracking-wider mb-3">
               Our Work
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -556,10 +556,10 @@ export default function Home() {
       />
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-background" ref={testimonialsRef}>
+      <section className="py-16 md:py-24 bg-section-light" ref={testimonialsRef}>
         <div className="container">
           <div className="text-center max-w-2xl mx-auto fade-in">
-            <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.55_0.14_85)] text-sm tracking-wider mb-3">
               Testimonials
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -571,12 +571,12 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 fade-in-stagger">
             {testimonials.map((t, i) => (
-              <Card key={i} className="fade-in p-6 border card-3d-light hover:border-[oklch(0.50_0.10_60/0.3)]">
+              <Card key={i} className="fade-in p-6 border card-3d-light hover:border-[oklch(0.55_0.14_85/0.3)]">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, si) => (
                     <Star
                       key={si}
-                      className="star-pop h-5 w-5 fill-[oklch(0.60_0.08_60)] text-[oklch(0.60_0.08_60)]"
+                      className="star-pop h-5 w-5 fill-[oklch(0.68_0.14_85)] text-[oklch(0.68_0.14_85)]"
                     />
                   ))}
                 </div>
@@ -594,7 +594,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA Band */}
-      <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white" ref={ctaRef}>
+      <section className="py-16 md:py-20 bg-section-cedar text-white" ref={ctaRef}>
         <div className="container">
           <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -607,7 +607,7 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="btn-3d-white text-[oklch(0.50_0.10_60)] font-semibold text-lg px-10"
+              className="btn-3d-white text-[oklch(0.55_0.14_85)] font-semibold text-lg px-10"
             >
               <Link href="/contact">
                 Request a Free Estimate

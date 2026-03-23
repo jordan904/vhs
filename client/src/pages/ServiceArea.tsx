@@ -46,7 +46,7 @@ export default function ServiceArea() {
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
+            <p className="font-accent text-[oklch(0.68_0.14_85)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
               Where We Work
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -61,7 +61,7 @@ export default function ServiceArea() {
       </section>
 
       {/* Main Content */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-section-light">
         <div className="container" ref={mainRef}>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="fade-in">
@@ -118,7 +118,7 @@ export default function ServiceArea() {
                   </p>
                   <Button
                     asChild
-                    className="bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+                    className="bg-[oklch(0.55_0.14_85)] hover:bg-[oklch(0.48_0.14_85)] text-white font-semibold"
                   >
                     <Link href="/contact">
                       Contact Us
@@ -152,7 +152,7 @@ export default function ServiceArea() {
                         key={community}
                         className="flex items-center gap-2 text-sm"
                       >
-                        <CheckCircle className="h-4 w-4 text-[oklch(0.50_0.10_60)] shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-[oklch(0.55_0.14_85)] shrink-0" />
                         <span className="text-foreground">{community}</span>
                       </div>
                     ))}
@@ -170,10 +170,10 @@ export default function ServiceArea() {
       </section>
 
       {/* Why Local Matters */}
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-16 md:py-24 bg-section-muted">
         <div className="container" ref={whyLocalRef}>
           <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
-            <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.55_0.14_85)] text-sm tracking-wider mb-3">
               Local Expertise
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -221,7 +221,7 @@ export default function ServiceArea() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white">
+      <section className="py-16 md:py-20 bg-section-cedar text-white">
         <div className="container" ref={ctaRef}>
           <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -234,7 +234,7 @@ export default function ServiceArea() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-[oklch(0.50_0.10_60)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
+              className="bg-white text-[oklch(0.55_0.14_85)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
             >
               <Link href="/contact">
                 Request a Free Estimate

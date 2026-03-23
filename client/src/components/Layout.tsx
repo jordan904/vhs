@@ -235,7 +235,7 @@ export default function Layout({ children }: LayoutProps) {
       <main className="flex-1 pt-16 md:pt-20">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-[oklch(0.22_0.06_250)] text-white">
+      <footer className="bg-section-footer text-white">
         {/* Main Footer */}
         <div className="container py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -253,7 +253,7 @@ export default function Layout({ children }: LayoutProps) {
                 projects for homeowners in Nova Scotia's Annapolis Valley and
                 surrounding communities.
               </p>
-              <p className="text-[oklch(0.60_0.08_60)] font-medium italic">
+              <p className="text-[oklch(0.68_0.14_85)] font-medium italic">
                 "Your Vision Is Our Priority"
               </p>
             </div>
@@ -319,7 +319,7 @@ export default function Layout({ children }: LayoutProps) {
               <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
               <div className="space-y-3">
                 <div className="hover-slide-right flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-[oklch(0.60_0.08_60)] shrink-0 mt-0.5" />
+                  <MapPin className="h-5 w-5 text-[oklch(0.68_0.14_85)] shrink-0 mt-0.5" />
                   <div>
                     <p className="text-white text-sm font-medium">
                       Versatile Home Solutions
@@ -332,7 +332,7 @@ export default function Layout({ children }: LayoutProps) {
                   </div>
                 </div>
                 <div className="hover-slide-right flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-[oklch(0.60_0.08_60)] shrink-0" />
+                  <Phone className="h-5 w-5 text-[oklch(0.68_0.14_85)] shrink-0" />
                   <a
                     href="tel:+19028245333"
                     className="text-white/70 hover:text-white transition-colors text-sm"
