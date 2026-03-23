@@ -72,7 +72,7 @@ export default function Process() {
       <section className="relative py-20 md:py-28 bg-[oklch(0.28_0.06_250)]">
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.72_0.16_90)] text-sm tracking-wider mb-4">
+            <p className="font-accent text-[oklch(0.78_0.18_88)] text-sm tracking-wider mb-4">
               How We Work
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -111,7 +111,7 @@ export default function Process() {
                   </Card>
                 </div>
                 <div>
-                  <p className="font-accent text-[oklch(0.58_0.16_90)] text-sm tracking-wider mb-2">
+                  <p className="font-accent text-[oklch(0.65_0.18_88)] text-sm tracking-wider mb-2">
                     Step {step.number}
                   </p>
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
@@ -126,7 +126,7 @@ export default function Process() {
                         key={detail}
                         className="flex items-center gap-3 text-foreground"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.58_0.16_90)]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.65_0.18_88)]" />
                         {detail}
                       </li>
                     ))}
@@ -142,7 +142,7 @@ export default function Process() {
       <section className="py-16 md:py-24 bg-section-muted">
         <div className="container" ref={apartRef}>
           <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
-            <p className="font-accent text-[oklch(0.58_0.16_90)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.65_0.18_88)] text-sm tracking-wider mb-3">
               Our Commitment
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -202,7 +202,7 @@ export default function Process() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-[oklch(0.58_0.16_90)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
+              className="bg-white text-[oklch(0.65_0.18_88)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
             >
               <Link href="/contact">
                 Request a Free Estimate

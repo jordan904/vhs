@@ -54,7 +54,7 @@ export default function About() {
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.72_0.16_90)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
+            <p className="font-accent text-[oklch(0.78_0.18_88)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
               About Us
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -74,7 +74,7 @@ export default function About() {
         <div className="container" ref={storyRef}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="fade-in">
-              <p className="font-accent text-[oklch(0.58_0.16_90)] text-sm tracking-wider mb-3">
+              <p className="font-accent text-[oklch(0.65_0.18_88)] text-sm tracking-wider mb-3">
                 Our Story
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -112,7 +112,7 @@ export default function About() {
                   className="w-full h-auto about-image-zoom"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-[oklch(0.58_0.16_90)] text-white p-6 rounded-lg shadow-lg max-w-xs hidden md:block">
+              <div className="absolute -bottom-6 -right-6 bg-[oklch(0.65_0.18_88)] text-white p-6 rounded-lg shadow-lg max-w-xs hidden md:block">
                 <p className="font-bold text-lg mb-1">Local Expertise</p>
                 <p className="text-white/80 text-sm">
                   Built for Nova Scotia's climate
@@ -127,7 +127,7 @@ export default function About() {
       <section className="py-16 md:py-24 bg-section-muted">
         <div className="container" ref={valuesRef}>
           <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
-            <p className="font-accent text-[oklch(0.58_0.16_90)] text-sm tracking-wider mb-3">
+            <p className="font-accent text-[oklch(0.65_0.18_88)] text-sm tracking-wider mb-3">
               What We Stand For
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -172,7 +172,7 @@ export default function About() {
               />
             </div>
             <div className="order-1 lg:order-2 fade-in">
-              <p className="font-accent text-[oklch(0.58_0.16_90)] text-sm tracking-wider mb-3">
+              <p className="font-accent text-[oklch(0.65_0.18_88)] text-sm tracking-wider mb-3">
                 Local & Proud
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -222,7 +222,7 @@ export default function About() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-[oklch(0.58_0.16_90)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
+              className="bg-white text-[oklch(0.65_0.18_88)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
             >
               <Link href="/contact">
                 Request a Free Estimate

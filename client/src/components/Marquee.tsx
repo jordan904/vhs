@@ -3,9 +3,6 @@ const marqueeItems = [
   "Custom Decks",
   "Sheds & Outbuildings",
   "Fences",
-  "Greenhouses",
-  "Garden Boxes",
-  "Bin Enclosures",
   "LVP Flooring",
   "Exterior Projects",
 ];
@@ -25,7 +22,7 @@ export default function Marquee() {
             <span className="text-white/90 font-accent text-sm tracking-wider px-6">
               {item}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.72_0.16_90)] shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.78_0.18_88)] shrink-0" />
           </span>
         ))}
       </div>

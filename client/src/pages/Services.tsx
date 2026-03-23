@@ -63,19 +63,6 @@ const services = [
     ],
   },
   {
-    title: "Greenhouses, Garbage Bin Enclosures & Garden Boxes",
-    description:
-      "Custom greenhouses, enclosures, and garden structures that blend function with aesthetics. Keep your property tidy and beautiful.",
-    image: "/images/greenhouse.jpg",
-    href: "/services/garbage-bins-garden-boxes",
-    highlights: [
-      "Custom designs",
-      "Interior/exterior options",
-      "Durable materials",
-      "Aesthetic appeal",
-    ],
-  },
-  {
     title: "LVP Flooring",
     description:
       "Transform your home's interior with beautiful, durable luxury vinyl plank flooring. Waterproof, scratch-resistant, and available in stunning wood-look designs.",
@@ -108,7 +95,7 @@ export default function Services() {
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.72_0.16_90)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
+            <p className="font-accent text-[oklch(0.78_0.18_88)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
               Our Services
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -131,7 +118,7 @@ export default function Services() {
               <Card
                 key={service.title}
                 className={`overflow-hidden border-0 shadow-lg card-3d fade-in ${
-                  service.featured ? "ring-2 ring-[oklch(0.58_0.16_90)]" : ""
+                  service.featured ? "ring-2 ring-[oklch(0.65_0.18_88)]" : ""
                 }`}
               >
                 <div
@@ -150,7 +137,7 @@ export default function Services() {
                       className="w-full h-full object-cover"
                     />
                     {service.featured && (
-                      <div className="absolute top-4 left-4 bg-[oklch(0.58_0.16_90)] text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                      <div className="absolute top-4 left-4 bg-[oklch(0.65_0.18_88)] text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
                         <Star className="h-4 w-4" />
                         Primary Service
                       </div>
@@ -169,7 +156,7 @@ export default function Services() {
                           key={highlight}
                           className="flex items-center gap-2 text-sm text-foreground"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.58_0.16_90)]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.65_0.18_88)]" />
                           {highlight}
                         </li>
                       ))}
@@ -187,7 +174,7 @@ export default function Services() {
                       <Button
                         asChild
                         variant="outline"
-                        className="border-[oklch(0.58_0.16_90)] text-[oklch(0.58_0.16_90)] hover:bg-[oklch(0.58_0.16_90)] hover:text-white"
+                        className="border-[oklch(0.65_0.18_88)] text-[oklch(0.65_0.18_88)] hover:bg-[oklch(0.65_0.18_88)] hover:text-white"
                       >
                         <Link href="/contact">Get a Quote</Link>
                       </Button>
@@ -214,7 +201,7 @@ export default function Services() {
             <Button
               asChild
               size="lg"
-              className="bg-[oklch(0.58_0.16_90)] hover:bg-[oklch(0.52_0.16_90)] text-white font-semibold text-lg px-10 btn-3d"
+              className="bg-[oklch(0.65_0.18_88)] hover:bg-[oklch(0.58_0.18_88)] text-white font-semibold text-lg px-10 btn-3d"
             >
               <Link href="/contact">
                 Request a Free Estimate
