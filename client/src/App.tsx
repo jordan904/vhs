@@ -16,6 +16,7 @@ import Fences from "./pages/services/Fences";
 import LvpFlooring from "./pages/services/LvpFlooring";
 import Process from "./pages/Process";
 import ServiceArea from "./pages/ServiceArea";
+import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -33,6 +34,7 @@ function Router() {
         <Route path="/services/lvp-flooring" component={LvpFlooring} />
         <Route path="/process" component={Process} />
         <Route path="/service-area" component={ServiceArea} />
+        <Route path="/careers" component={Careers} />
         <Route path="/contact" component={Contact} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />

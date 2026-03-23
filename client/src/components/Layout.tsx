@@ -33,6 +33,7 @@ const navLinks = [
   { name: "Services", href: "/services", hasDropdown: true },
   { name: "Our Process", href: "/process" },
   { name: "Service Area", href: "/service-area" },
+  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
 
