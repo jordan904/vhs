@@ -107,10 +107,22 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/estimate", {
+      const res = await fetch("https://formsubmit.co/ajax/jordan@versatilehomesolutions.ca", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Estimate Request from ${formData.fullName} - ${formData.service}`,
+          "Full Name": formData.fullName,
+          "Email": formData.email,
+          "Phone": formData.phone,
+          "Address": formData.address,
+          "Service": formData.service,
+          "Timeframe": formData.timeframe,
+          "Description": formData.description,
+        }),
       });
 
       if (!res.ok) throw new Error("Failed to submit");

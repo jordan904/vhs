@@ -65,6 +65,7 @@ export default function Layout({ children }: LayoutProps) {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
