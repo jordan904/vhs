@@ -5,6 +5,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Heart, MapPin, Wrench } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const values = [
   {
@@ -34,21 +35,26 @@ const values = [
 ];
 
 export default function About() {
+  const storyRef = useScrollReveal();
+  const valuesRef = useScrollReveal();
+  const commitmentRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
+
   return (
     <div className="pb-16 md:pb-0">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/images/about-hero.jpg"
             alt="Skilled craftsman at work"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hero-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.22_0.06_250/0.95)] via-[oklch(0.22_0.06_250/0.85)] to-[oklch(0.22_0.06_250/0.7)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4">
+            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
               About Us
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -65,9 +71,9 @@ export default function About() {
 
       {/* Our Story */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="container">
+        <div className="container" ref={storyRef}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="fade-in">
               <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
                 Our Story
               </p>
@@ -98,12 +104,14 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <img
-                src="/images/insulation.jpg"
-                alt="Quality construction work"
-                className="w-full h-auto rounded-lg shadow-xl"
-              />
+            <div className="relative fade-in">
+              <div className="overflow-hidden rounded-lg shadow-xl">
+                <img
+                  src="/images/insulation.jpg"
+                  alt="Quality construction work"
+                  className="w-full h-auto about-image-zoom"
+                />
+              </div>
               <div className="absolute -bottom-6 -right-6 bg-[oklch(0.50_0.10_60)] text-white p-6 rounded-lg shadow-lg max-w-xs hidden md:block">
                 <p className="font-bold text-lg mb-1">Local Expertise</p>
                 <p className="text-white/80 text-sm">
@@ -117,8 +125,8 @@ export default function About() {
 
       {/* Our Values */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="container" ref={valuesRef}>
+          <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
             <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
               What We Stand For
             </p>
@@ -131,13 +139,13 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in-stagger">
             {values.map((value) => (
               <div
                 key={value.title}
-                className="bg-card p-6 rounded-lg border border-border hover:shadow-lg transition-shadow"
+                className="bg-card p-6 rounded-lg border border-border card-3d fade-in"
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4 icon-pop">
                   <value.icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">
@@ -154,16 +162,16 @@ export default function About() {
 
       {/* Local Commitment */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="container">
+        <div className="container" ref={commitmentRef}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="order-2 lg:order-1 fade-in">
               <img
                 src="/images/flags.jpeg"
                 alt="Canadian and Nova Scotia flags"
                 className="w-full max-w-md h-auto rounded-lg shadow-xl mx-auto"
               />
             </div>
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 fade-in">
               <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
                 Local & Proud
               </p>
@@ -202,8 +210,8 @@ export default function About() {
 
       {/* CTA Section */}
       <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
+        <div className="container" ref={ctaRef}>
+          <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Let's Build Something Together
             </h2>
@@ -214,7 +222,7 @@ export default function About() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-[oklch(0.50_0.10_60)] hover:bg-white/90 font-semibold text-lg px-10"
+              className="bg-white text-[oklch(0.50_0.10_60)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
             >
               <Link href="/contact">
                 Request a Free Estimate

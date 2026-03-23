@@ -19,6 +19,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Phone, Mail, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
   { value: "metal-roofing", label: "Metal Roofing" },
@@ -32,8 +33,8 @@ const services = [
 
 const timeframes = [
   { value: "asap", label: "ASAP" },
-  { value: "1-3-months", label: "1–3 months" },
-  { value: "3-6-months", label: "3–6 months" },
+  { value: "1-3-months", label: "1\u20133 months" },
+  { value: "3-6-months", label: "3\u20136 months" },
   { value: "planning", label: "Planning ahead" },
 ];
 
@@ -51,6 +52,8 @@ export default function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const formRef = useScrollReveal();
+  const successRef = useScrollReveal();
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -137,13 +140,13 @@ export default function Contact() {
             <img
               src="/images/contact-hero.jpg"
               alt="Nova Scotia home"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hero-zoom"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.22_0.06_250/0.95)] via-[oklch(0.22_0.06_250/0.85)] to-[oklch(0.22_0.06_250/0.7)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
           </div>
           <div className="container relative z-10">
             <div className="max-w-2xl">
-              <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4">
+              <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
                 Thank You
               </p>
               <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -155,8 +158,8 @@ export default function Contact() {
 
         {/* Success Message */}
         <section className="py-16 md:py-24 bg-background">
-          <div className="container">
-            <div className="max-w-2xl mx-auto text-center">
+          <div className="container" ref={successRef}>
+            <div className="max-w-2xl mx-auto text-center fade-in">
               <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="h-10 w-10 text-green-600" />
               </div>
@@ -171,7 +174,7 @@ export default function Contact() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   asChild
-                  className="bg-[oklch(0.28_0.06_250)] hover:bg-[oklch(0.22_0.06_250)] text-white font-semibold"
+                  className="bg-[oklch(0.28_0.06_250)] hover:bg-[oklch(0.22_0.06_250)] text-white font-semibold btn-3d-inverted"
                 >
                   <Link href="/">Return to Home</Link>
                 </Button>
@@ -198,13 +201,13 @@ export default function Contact() {
           <img
             src="/images/contact-hero.jpg"
             alt="Nova Scotia home"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hero-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.22_0.06_250/0.95)] via-[oklch(0.22_0.06_250/0.85)] to-[oklch(0.22_0.06_250/0.7)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4">
+            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4 hero-slide-down glass inline-block px-4 py-1.5 rounded-full">
               Get In Touch
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -221,11 +224,11 @@ export default function Contact() {
 
       {/* Form Section */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="container">
+        <div className="container" ref={formRef}>
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Form */}
-            <div className="lg:col-span-2">
-              <Card className="border-0 shadow-lg">
+            <div className="lg:col-span-2 fade-in">
+              <Card className="border-0 shadow-lg card-3d">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold text-foreground mb-6">
                     Estimate Request Form
@@ -444,7 +447,7 @@ export default function Contact() {
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+                      className="w-full bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold btn-3d"
                     >
                       {isSubmitting ? (
                         "Submitting..."
@@ -461,16 +464,16 @@ export default function Contact() {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 fade-in">
               <div className="sticky top-24 space-y-6">
                 {/* Contact Info */}
-                <Card className="border-0 shadow-md">
+                <Card className="border-0 shadow-md card-3d-light">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-bold text-foreground mb-4">
                       Contact Information
                     </h3>
                     <div className="space-y-4">
-                      <div className="flex items-start gap-3">
+                      <div className="flex items-start gap-3 hover-slide-right">
                         <MapPin className="h-5 w-5 text-[oklch(0.50_0.10_60)] shrink-0 mt-0.5" />
                         <div>
                           <p className="font-medium text-foreground">
@@ -483,7 +486,7 @@ export default function Contact() {
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 hover-slide-right">
                         <Phone className="h-5 w-5 text-[oklch(0.50_0.10_60)] shrink-0" />
                         <a
                           href="tel:+19028245333"
@@ -497,7 +500,7 @@ export default function Contact() {
                 </Card>
 
                 {/* What Happens Next */}
-                <Card className="border-0 shadow-md">
+                <Card className="border-0 shadow-md card-3d-light">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-bold text-foreground mb-4">
                       What Happens Next?

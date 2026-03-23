@@ -1,9 +1,10 @@
 /* Maritime Craftsman Design System
  * Layout wrapper with persistent header and footer
  * Deep Navy header, warm footer with NAP block
+ * Premium animations: rAF scroll, nav underlines, footer micro-interactions
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,13 +40,27 @@ export default function Layout({ children }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
+  const rafRef = useRef<number>(0);
 
+  // Navbar scroll with requestAnimationFrame + passive listener
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        rafRef.current = requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -58,7 +73,7 @@ export default function Layout({ children }: LayoutProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[oklch(0.28_0.06_250)] shadow-lg"
+            ? "bg-[oklch(0.28_0.06_250)] shadow-lg shadow-[oklch(0.22_0.06_250/0.3)]"
             : "bg-[oklch(0.28_0.06_250/0.95)]"
         }`}
       >
@@ -88,10 +103,10 @@ export default function Layout({ children }: LayoutProps) {
                   <DropdownMenu key={link.name}>
                     <DropdownMenuTrigger asChild>
                       <button
-                        className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md ${
+                        className={`nav-link-premium px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md ${
                           location.startsWith("/services")
                             ? "text-white bg-white/10"
-                            : "text-white/80 hover:text-white hover:bg-white/10"
+                            : "text-white/80 hover:text-white hover:bg-white/5"
                         }`}
                       >
                         {link.name}
@@ -117,10 +132,10 @@ export default function Layout({ children }: LayoutProps) {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`px-3 py-2 text-sm font-medium transition-colors rounded-md ${
+                    className={`nav-link-premium px-3 py-2 text-sm font-medium transition-colors rounded-md ${
                       location === link.href
-                        ? "text-white bg-white/10"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
+                        ? "text-white bg-white/10 active"
+                        : "text-white/80 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     {link.name}
@@ -129,11 +144,11 @@ export default function Layout({ children }: LayoutProps) {
               )}
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Button - 3D with pulse */}
             <div className="hidden md:block">
               <Button
                 asChild
-                className="bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+                className="btn-3d nav-cta-pulse text-white font-semibold rounded-full px-6"
               >
                 <Link href="/contact">Request a Free Estimate</Link>
               </Button>
@@ -144,6 +159,7 @@ export default function Layout({ children }: LayoutProps) {
               className="lg:hidden p-2 text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -203,7 +219,7 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="mt-4 px-3">
                   <Button
                     asChild
-                    className="w-full bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+                    className="w-full btn-3d text-white font-semibold"
                   >
                     <Link href="/contact">Request a Free Estimate</Link>
                   </Button>
@@ -249,7 +265,7 @@ export default function Layout({ children }: LayoutProps) {
                   <li key={service.href}>
                     <Link
                       href={service.href}
-                      className="text-white/70 hover:text-white transition-colors text-sm"
+                      className="hover-slide-right-sm inline-block text-white/70 hover:text-white transition-colors text-sm"
                     >
                       {service.name}
                     </Link>
@@ -265,7 +281,7 @@ export default function Layout({ children }: LayoutProps) {
                 <li>
                   <Link
                     href="/about"
-                    className="text-white/70 hover:text-white transition-colors text-sm"
+                    className="hover-slide-right-sm inline-block text-white/70 hover:text-white transition-colors text-sm"
                   >
                     About Us
                   </Link>
@@ -273,7 +289,7 @@ export default function Layout({ children }: LayoutProps) {
                 <li>
                   <Link
                     href="/process"
-                    className="text-white/70 hover:text-white transition-colors text-sm"
+                    className="hover-slide-right-sm inline-block text-white/70 hover:text-white transition-colors text-sm"
                   >
                     Our Process
                   </Link>
@@ -281,7 +297,7 @@ export default function Layout({ children }: LayoutProps) {
                 <li>
                   <Link
                     href="/service-area"
-                    className="text-white/70 hover:text-white transition-colors text-sm"
+                    className="hover-slide-right-sm inline-block text-white/70 hover:text-white transition-colors text-sm"
                   >
                     Service Area
                   </Link>
@@ -289,7 +305,7 @@ export default function Layout({ children }: LayoutProps) {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-white/70 hover:text-white transition-colors text-sm"
+                    className="hover-slide-right-sm inline-block text-white/70 hover:text-white transition-colors text-sm"
                   >
                     Contact Us
                   </Link>
@@ -301,7 +317,7 @@ export default function Layout({ children }: LayoutProps) {
             <div>
               <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
               <div className="space-y-3">
-                <div className="flex items-start gap-3">
+                <div className="hover-slide-right flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-[oklch(0.60_0.08_60)] shrink-0 mt-0.5" />
                   <div>
                     <p className="text-white text-sm font-medium">
@@ -314,7 +330,7 @@ export default function Layout({ children }: LayoutProps) {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="hover-slide-right flex items-center gap-3">
                   <Phone className="h-5 w-5 text-[oklch(0.60_0.08_60)] shrink-0" />
                   <a
                     href="tel:+19028245333"
@@ -327,7 +343,7 @@ export default function Layout({ children }: LayoutProps) {
               <div className="mt-6">
                 <Button
                   asChild
-                  className="w-full bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+                  className="w-full btn-3d text-white font-semibold"
                 >
                   <Link href="/contact">Request a Free Estimate</Link>
                 </Button>
@@ -354,7 +370,7 @@ export default function Layout({ children }: LayoutProps) {
       <div className="fixed bottom-0 left-0 right-0 md:hidden bg-[oklch(0.28_0.06_250)] border-t border-white/10 p-3 z-40">
         <Button
           asChild
-          className="w-full bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+          className="w-full btn-3d text-white font-semibold"
         >
           <Link href="/contact">Request a Free Estimate</Link>
         </Button>

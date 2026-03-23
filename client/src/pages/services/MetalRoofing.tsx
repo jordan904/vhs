@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ArrowRight, CheckCircle, Shield, Zap, Leaf, Wind } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const benefits = [
   {
@@ -80,21 +81,28 @@ const galleryImages = [
 ];
 
 export default function MetalRoofing() {
+  const contentRef = useScrollReveal();
+  const galleryRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
+
   return (
     <div className="pb-16 md:pb-0">
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="/images/metalroof.jpg"
             alt="Premium metal roofing"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hero-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.22_0.06_250/0.95)] via-[oklch(0.22_0.06_250/0.85)] to-[oklch(0.22_0.06_250/0.6)]" />
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(135deg, oklch(0.22 0.06 250 / 0.88) 0%, oklch(0.22 0.06 250 / 0.65) 100%)" }}
+          />
         </div>
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4">
+            <p className="glass hero-slide-down inline-block px-4 py-1.5 rounded-full font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4">
               Our Primary Service
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -108,7 +116,7 @@ export default function MetalRoofing() {
             <Button
               asChild
               size="lg"
-              className="bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+              className="btn-3d text-white font-semibold"
             >
               <Link href="/contact">
                 Request a Free Estimate
@@ -121,10 +129,10 @@ export default function MetalRoofing() {
 
       {/* Main Content */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="container">
+        <div className="container" ref={contentRef}>
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 fade-in">
               <h2 className="text-3xl font-bold text-foreground mb-6">
                 Why Choose Metal Roofing?
               </h2>
@@ -153,11 +161,11 @@ export default function MetalRoofing() {
               </div>
 
               {/* Benefits Grid */}
-              <div className="grid sm:grid-cols-2 gap-6 mb-12">
+              <div className="grid sm:grid-cols-2 gap-6 mb-12 fade-in-stagger">
                 {benefits.map((benefit) => (
-                  <Card key={benefit.title} className="border-0 shadow-md">
+                  <Card key={benefit.title} className="card-3d border-0 shadow-md fade-in">
                     <CardContent className="p-6">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4 icon-pop">
                         <benefit.icon className="h-6 w-6" />
                       </div>
                       <h3 className="text-lg font-bold text-foreground mb-2">
@@ -227,7 +235,7 @@ export default function MetalRoofing() {
                     </p>
                     <Button
                       asChild
-                      className="w-full bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+                      className="w-full btn-3d text-white font-semibold"
                     >
                       <Link href="/contact">
                         Request a Free Estimate
@@ -247,7 +255,7 @@ export default function MetalRoofing() {
                       <li>
                         <Link
                           href="/services/sheds-outbuildings"
-                          className="text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.50_0.10_60)] transition-colors"
+                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.50_0.10_60)] transition-colors"
                         >
                           Sheds & Outbuildings →
                         </Link>
@@ -255,7 +263,7 @@ export default function MetalRoofing() {
                       <li>
                         <Link
                           href="/services"
-                          className="text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.50_0.10_60)] transition-colors"
+                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.50_0.10_60)] transition-colors"
                         >
                           View All Services →
                         </Link>
@@ -270,16 +278,16 @@ export default function MetalRoofing() {
       </section>
 
       {/* Gallery Strip */}
-      <section className="py-12 bg-muted">
+      <section className="py-12 bg-muted" ref={galleryRef}>
         <div className="container">
-          <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+          <h3 className="text-2xl font-bold text-foreground mb-6 text-center fade-in">
             Our Metal Roofing Work
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in-stagger">
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="relative aspect-video overflow-hidden rounded-lg group"
+                className="gallery-item fade-in relative aspect-video overflow-hidden rounded-lg group"
               >
                 <img
                   src={image.src}
@@ -293,9 +301,9 @@ export default function MetalRoofing() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white">
+      <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white" ref={ctaRef}>
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Protect Your Home with Metal Roofing
             </h2>
@@ -307,7 +315,7 @@ export default function MetalRoofing() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-[oklch(0.50_0.10_60)] hover:bg-white/90 font-semibold text-lg px-10"
+              className="btn-3d-white text-[oklch(0.50_0.10_60)] font-semibold text-lg px-10"
             >
               <Link href="/contact">
                 Request a Free Estimate

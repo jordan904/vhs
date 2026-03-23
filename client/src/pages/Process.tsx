@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Phone, ClipboardList, Hammer, CheckSquare } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const steps = [
   {
@@ -61,6 +62,10 @@ const steps = [
 ];
 
 export default function Process() {
+  const stepsRef = useScrollReveal();
+  const apartRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
+
   return (
     <div className="pb-16 md:pb-0">
       {/* Hero Section */}
@@ -84,17 +89,17 @@ export default function Process() {
 
       {/* Process Steps */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="container">
+        <div className="container" ref={stepsRef}>
           <div className="space-y-16">
             {steps.map((step, index) => (
               <div
                 key={step.number}
-                className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+                className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center fade-in ${
                   index % 2 === 1 ? "lg:grid-flow-dense" : ""
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <Card className="border-0 shadow-lg overflow-hidden">
+                  <Card className="border-0 shadow-lg overflow-hidden card-3d">
                     <div className="bg-[oklch(0.28_0.06_250)] p-8 flex items-center justify-center">
                       <div className="text-center">
                         <span className="text-6xl md:text-8xl font-bold text-white/20">
@@ -135,8 +140,8 @@ export default function Process() {
 
       {/* What Sets Us Apart */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="container" ref={apartRef}>
+          <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
             <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
               Our Commitment
             </p>
@@ -145,8 +150,8 @@ export default function Process() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-0 shadow-md">
+          <div className="grid md:grid-cols-3 gap-6 fade-in-stagger">
+            <Card className="border-0 shadow-md card-3d fade-in">
               <CardContent className="p-6 text-center">
                 <h3 className="text-lg font-bold text-foreground mb-3">
                   Clear Communication
@@ -157,7 +162,7 @@ export default function Process() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="border-0 shadow-md">
+            <Card className="border-0 shadow-md card-3d fade-in">
               <CardContent className="p-6 text-center">
                 <h3 className="text-lg font-bold text-foreground mb-3">
                   Respect for Your Property
@@ -168,7 +173,7 @@ export default function Process() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="border-0 shadow-md">
+            <Card className="border-0 shadow-md card-3d fade-in">
               <CardContent className="p-6 text-center">
                 <h3 className="text-lg font-bold text-foreground mb-3">
                   Quality Guaranteed
@@ -185,8 +190,8 @@ export default function Process() {
 
       {/* CTA Section */}
       <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
+        <div className="container" ref={ctaRef}>
+          <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Get Started?
             </h2>
@@ -197,7 +202,7 @@ export default function Process() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-[oklch(0.50_0.10_60)] hover:bg-white/90 font-semibold text-lg px-10"
+              className="bg-white text-[oklch(0.50_0.10_60)] hover:bg-white/90 font-semibold text-lg px-10 btn-3d-white"
             >
               <Link href="/contact">
                 Request a Free Estimate

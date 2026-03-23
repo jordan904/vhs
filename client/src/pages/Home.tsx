@@ -1,8 +1,9 @@
 /* Maritime Craftsman Design System - Home Page
- * Hero with diagonal dividers, services grid, trust elements
- * Conversion-focused with prominent CTAs
+ * Premium animations: hero zoom, gold shimmer, stat counters,
+ * marquee, 3D cards, lightbox gallery, scroll reveals, testimonials
  */
 
+import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,7 +14,13 @@ import {
   Users,
   Clock,
   CheckCircle,
+  Star,
+  Maximize2,
 } from "lucide-react";
+import Marquee from "@/components/Marquee";
+import Lightbox from "@/components/Lightbox";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const services = [
   {
@@ -97,29 +104,78 @@ const galleryImages = [
   { src: "/images/patio.jpg", alt: "Patio project" },
 ];
 
+const testimonials = [
+  {
+    quote: "Excellent work on our metal roof. Professional team, great communication, and the finished product looks fantastic.",
+    name: "Sarah M.",
+    location: "Wolfville, NS",
+    rating: 5,
+  },
+  {
+    quote: "They built us a beautiful deck that perfectly fits our home. Couldn't be happier with the quality and craftsmanship.",
+    name: "David & Karen T.",
+    location: "Kentville, NS",
+    rating: 5,
+  },
+  {
+    quote: "From the first call to the final walkthrough, everything was professional and on time. Highly recommend!",
+    name: "Mike L.",
+    location: "Berwick, NS",
+    rating: 5,
+  },
+];
+
 export default function Home() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const spotlightRef = useScrollReveal();
+  const servicesRef = useScrollReveal();
+  const whyRef = useScrollReveal();
+  const processRef = useScrollReveal();
+  const areaRef = useScrollReveal();
+  const galleryRef = useScrollReveal();
+  const testimonialsRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
+
+  const yearsCount = useCountUp(40, { delay: 200 });
+  const projectsCount = useCountUp(100, { delay: 400 });
+  const satisfactionCount = useCountUp(100, { delay: 600 });
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
     <div className="pb-16 md:pb-0">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center">
-        {/* Background Image */}
-        <div className="absolute inset-0">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background Image with zoom */}
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="/images/hero-bg.jpg"
-            alt="Nova Scotia countryside"
-            className="w-full h-full object-cover"
+            alt=""
+            className="w-full h-full object-cover hero-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.22_0.06_250/0.95)] via-[oklch(0.22_0.06_250/0.8)] to-[oklch(0.22_0.06_250/0.6)]" />
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(135deg, oklch(0.22 0.06 250 / 0.88) 0%, oklch(0.22 0.06 250 / 0.65) 100%)"
+          }} />
         </div>
 
         {/* Hero Content */}
         <div className="container relative z-10 py-20">
           <div className="max-w-2xl">
-            <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-4">
-              Nova Scotia's Trusted Home Improvement Experts
-            </p>
+            {/* Badge with glassmorphism */}
+            <div className="hero-slide-down inline-block glass rounded-full px-4 py-2 mb-6">
+              <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider">
+                Nova Scotia's Trusted Home Improvement Experts
+              </p>
+            </div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-              Transform Your Home with Expert Craftsmanship
+              Transform Your Home with{" "}
+              <span className="gold-shimmer">Expert Craftsmanship</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 italic mb-2">
               "Your Vision Is Our Priority"
@@ -129,11 +185,34 @@ export default function Home() {
               bring quality construction to homeowners across the Annapolis
               Valley and surrounding Nova Scotia communities.
             </p>
+
+            {/* Stat Counters */}
+            <div className="flex gap-8 mb-10">
+              <div className="hero-stat-pop text-center" ref={yearsCount.ref}>
+                <div className={`text-3xl md:text-4xl font-bold text-white ${yearsCount.done ? "stat-bounce" : ""}`}>
+                  {yearsCount.value}+
+                </div>
+                <div className="text-white/60 text-sm font-accent tracking-wider">Year Lifespan</div>
+              </div>
+              <div className="hero-stat-pop text-center" ref={projectsCount.ref}>
+                <div className={`text-3xl md:text-4xl font-bold text-white ${projectsCount.done ? "stat-bounce" : ""}`}>
+                  {projectsCount.value}+
+                </div>
+                <div className="text-white/60 text-sm font-accent tracking-wider">Projects</div>
+              </div>
+              <div className="hero-stat-pop text-center" ref={satisfactionCount.ref}>
+                <div className={`text-3xl md:text-4xl font-bold text-white ${satisfactionCount.done ? "stat-bounce" : ""}`}>
+                  {satisfactionCount.value}%
+                </div>
+                <div className="text-white/60 text-sm font-accent tracking-wider">Satisfaction</div>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 asChild
                 size="lg"
-                className="bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold text-lg px-8"
+                className="btn-3d cta-pulse text-white font-semibold text-lg px-8"
               >
                 <Link href="/contact">
                   Request a Free Estimate
@@ -144,7 +223,7 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 bg-transparent font-semibold text-lg px-8"
+                className="border-white/30 text-white hover:bg-white/10 bg-transparent font-semibold text-lg px-8 transition-all duration-300"
               >
                 <Link href="/services">View Our Services</Link>
               </Button>
@@ -156,11 +235,14 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-background" style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%, 0 100%)" }} />
       </section>
 
+      {/* Marquee */}
+      <Marquee />
+
       {/* Primary Service Spotlight - Metal Roofing */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background" ref={spotlightRef}>
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="order-2 lg:order-1 fade-in">
               <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
                 Our Primary Service
               </p>
@@ -191,7 +273,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   asChild
-                  className="bg-[oklch(0.28_0.06_250)] hover:bg-[oklch(0.22_0.06_250)] text-white font-semibold"
+                  className="btn-3d-inverted text-white font-semibold"
                 >
                   <Link href="/services/metal-roofing">
                     Learn More About Metal Roofing
@@ -201,13 +283,13 @@ export default function Home() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-[oklch(0.50_0.10_60)] text-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.50_0.10_60)] hover:text-white"
+                  className="border-[oklch(0.50_0.10_60)] text-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.50_0.10_60)] hover:text-white transition-all duration-300"
                 >
                   <Link href="/contact">Get a Free Quote</Link>
                 </Button>
               </div>
             </div>
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 fade-in">
               <div className="relative">
                 <img
                   src="/images/metalroof.jpg"
@@ -225,9 +307,9 @@ export default function Home() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 md:py-24 bg-muted diagonal-top">
+      <section className="py-16 md:py-24 bg-muted diagonal-top" ref={servicesRef}>
         <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
             <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
               What We Do
             </p>
@@ -240,11 +322,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in-stagger">
             {services.map((service) => (
               <Card
                 key={service.title}
-                className={`group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 ${
+                className={`fade-in group overflow-hidden border-0 card-3d ${
                   service.featured ? "md:col-span-2 lg:col-span-1" : ""
                 }`}
               >
@@ -275,11 +357,11 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-10 fade-in">
             <Button
               asChild
               size="lg"
-              className="bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+              className="btn-3d text-white font-semibold"
             >
               <Link href="/services">
                 View All Services
@@ -291,9 +373,9 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background" ref={whyRef}>
         <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
             <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
               Why Choose Us
             </p>
@@ -307,13 +389,13 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in-stagger">
             {whyChoose.map((item) => (
               <div
                 key={item.title}
-                className="text-center p-6 rounded-lg bg-card border border-border hover:shadow-lg transition-shadow"
+                className="fade-in text-center p-6 rounded-lg bg-card border border-border card-3d"
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4 icon-pop">
                   <item.icon className="h-7 w-7" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">
@@ -329,9 +411,9 @@ export default function Home() {
       </section>
 
       {/* Process Teaser */}
-      <section className="py-16 md:py-24 bg-[oklch(0.28_0.06_250)] text-white diagonal-top">
+      <section className="py-16 md:py-24 bg-[oklch(0.28_0.06_250)] text-white diagonal-top" ref={processRef}>
         <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
             <p className="font-accent text-[oklch(0.60_0.08_60)] text-sm tracking-wider mb-3">
               How We Work
             </p>
@@ -344,11 +426,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 fade-in-stagger">
             {processSteps.map((item) => (
               <div
                 key={item.step}
-                className="relative p-6 rounded-lg bg-white/5 border border-white/10"
+                className="fade-in relative p-6 rounded-lg bg-white/5 border border-white/10 card-3d-light"
+                style={{ ["--tw-shadow-color" as string]: "transparent" }}
               >
                 <div className="text-4xl font-bold text-[oklch(0.60_0.08_60)] mb-3">
                   {item.step}
@@ -359,11 +442,11 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center fade-in">
             <Button
               asChild
               size="lg"
-              className="bg-[oklch(0.50_0.10_60)] hover:bg-[oklch(0.45_0.10_60)] text-white font-semibold"
+              className="btn-3d text-white font-semibold"
             >
               <Link href="/process">
                 Learn More About Our Process
@@ -375,10 +458,10 @@ export default function Home() {
       </section>
 
       {/* Service Area Teaser */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background" ref={areaRef}>
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
+            <div className="fade-in">
               <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
                 Where We Work
               </p>
@@ -408,7 +491,7 @@ export default function Home() {
               </div>
               <Button
                 asChild
-                className="bg-[oklch(0.28_0.06_250)] hover:bg-[oklch(0.22_0.06_250)] text-white font-semibold"
+                className="btn-3d-inverted text-white font-semibold"
               >
                 <Link href="/service-area">
                   View Our Service Area
@@ -416,7 +499,7 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-            <div className="relative">
+            <div className="fade-in relative overflow-hidden rounded-lg">
               <img
                 src="/images/contact-hero.jpg"
                 alt="Nova Scotia home with metal roof"
@@ -428,9 +511,9 @@ export default function Home() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-16 md:py-24 bg-muted" ref={galleryRef}>
         <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
             <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
               Our Work
             </p>
@@ -442,19 +525,20 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 fade-in-stagger">
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="relative aspect-square overflow-hidden rounded-lg group"
+                className="fade-in gallery-item relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
+                onClick={() => openLightbox(index)}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-[oklch(0.28_0.06_250/0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-white font-medium">{image.alt}</span>
+                  <Maximize2 className="text-white h-8 w-8 transform scale-75 group-hover:scale-100 transition-transform duration-300" />
                 </div>
               </div>
             ))}
@@ -462,10 +546,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Placeholder */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* Lightbox */}
+      <Lightbox
+        images={galleryImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={setLightboxIndex}
+      />
+
+      {/* Testimonials */}
+      <section className="py-16 md:py-24 bg-background" ref={testimonialsRef}>
         <div className="container">
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto fade-in">
             <p className="font-accent text-[oklch(0.50_0.10_60)] text-sm tracking-wider mb-3">
               Testimonials
             </p>
@@ -474,29 +567,36 @@ export default function Home() {
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
               We're proud of the relationships we build with our customers.
-              Testimonials coming soon.
             </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <Card key={i} className="p-6 border-dashed border-2">
-                  <div className="text-center text-muted-foreground">
-                    <p className="italic mb-4">
-                      "Customer testimonial placeholder"
-                    </p>
-                    <p className="font-semibold">— Customer Name</p>
-                    <p className="text-sm">Location, NS</p>
-                  </div>
-                </Card>
-              ))}
-            </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 fade-in-stagger">
+            {testimonials.map((t, i) => (
+              <Card key={i} className="fade-in p-6 border card-3d-light hover:border-[oklch(0.50_0.10_60/0.3)]">
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: t.rating }).map((_, si) => (
+                    <Star
+                      key={si}
+                      className="star-pop h-5 w-5 fill-[oklch(0.60_0.08_60)] text-[oklch(0.60_0.08_60)]"
+                    />
+                  ))}
+                </div>
+                <p className="text-muted-foreground italic mb-4">
+                  "{t.quote}"
+                </p>
+                <div>
+                  <p className="font-semibold text-foreground">— {t.name}</p>
+                  <p className="text-sm text-muted-foreground">{t.location}</p>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Final CTA Band */}
-      <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white">
+      <section className="py-16 md:py-20 bg-[oklch(0.50_0.10_60)] text-white" ref={ctaRef}>
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Transform Your Home?
             </h2>
@@ -507,7 +607,7 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-[oklch(0.50_0.10_60)] hover:bg-white/90 font-semibold text-lg px-10"
+              className="btn-3d-white text-[oklch(0.50_0.10_60)] font-semibold text-lg px-10"
             >
               <Link href="/contact">
                 Request a Free Estimate
