@@ -127,6 +127,7 @@ export default function Contact() {
       if (!res.ok) throw new Error("Failed to submit");
 
       setIsSubmitted(true);
+      window.scrollTo(0, 0);
       toast.success("Your estimate request has been submitted!");
     } catch {
       toast.error("Something went wrong. Please try again or call us directly.");
@@ -177,6 +178,9 @@ export default function Contact() {
               <h2 className="text-3xl font-bold text-foreground mb-4">
                 We've Received Your Estimate Request
               </h2>
+              <p className="text-[oklch(0.50_0.10_60)] text-xl font-semibold mb-4">
+                We will be in touch shortly!
+              </p>
               <p className="text-muted-foreground text-lg mb-8">
                 Thank you for contacting Versatile Home Solutions. We'll review
                 your project details and reach out within 1-2 business days to
