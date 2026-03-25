@@ -20,7 +20,7 @@ interface LayoutProps {
 }
 
 const services = [
-  { name: "Metal Roofing", href: "/services/metal-roofing" },
+  { name: "Roofing, Siding & Insulation", href: "/roofing" },
   { name: "Decks", href: "/services/decks" },
   { name: "Sheds & Outbuildings", href: "/services/sheds-outbuildings" },
   { name: "Fences", href: "/services/fences" },
@@ -250,9 +250,8 @@ export default function Layout({ children }: LayoutProps) {
                 />
               </Link>
               <p className="text-white/70 text-sm leading-relaxed mb-4">
-                Premium metal roofing, decks, sheds, fences, and exterior
-                projects for homeowners in Nova Scotia's Annapolis Valley and
-                surrounding communities.
+                Roofing, siding, insulation, decks, sheds, fences, and exterior
+                projects for homeowners in Halifax and the surrounding HRM.
               </p>
               <p className="text-[oklch(0.78_0.18_88)] font-medium italic">
                 "Your Vision Is Our Priority"

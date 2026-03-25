@@ -10,17 +10,17 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
   {
-    title: "Metal Roofing",
+    title: "Roofing, Siding & Insulation",
     description:
-      "Our specialty. Durable, weather-resistant metal roofing built to withstand Nova Scotia's harshest conditions for 40+ years.",
-    image: "/images/metalroof.jpg",
-    href: "/services/metal-roofing",
+      "GAF-certified roofing, vinyl and metal siding, and insulation. One team for your entire building envelope, fully insured with up to 50-year warranties.",
+    image: "/images/img_037a1c06ddef.jpg",
+    href: "/roofing",
     featured: true,
     highlights: [
-      "40+ year lifespan",
-      "Superior weather resistance",
-      "Energy efficient",
-      "Low maintenance",
+      "GAF-certified (top 5% in Canada)",
+      "Up to 50-year materials warranty",
+      "Free annual drone inspections",
+      "Flexible financing available",
     ],
   },
   {
@@ -88,7 +88,7 @@ export default function Services() {
         <div className="absolute inset-0">
           <img
             src="/images/services-hero.jpg"
-            alt="Metal roofing detail"
+            alt="Versatile Home Solutions services"
             className="w-full h-full object-cover hero-zoom"
           />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />

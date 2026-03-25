@@ -1,7 +1,8 @@
-/* Maritime Craftsman Design System - Metal Roofing Service Page
- * Primary money page with detailed content, FAQ, and strong CTAs
+/* Maritime Craftsman Design System - Roofing, Siding & Insulation Service Page
+ * Primary money page with detailed content, gallery, FAQ, and strong CTAs
  */
 
+import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,79 +12,164 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, CheckCircle, Shield, Zap, Leaf, Wind } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  Shield,
+  Zap,
+  Award,
+  Users,
+  Clock,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  Wrench,
+  Home,
+  Thermometer,
+  Sun,
+  Search,
+  CreditCard,
+  X,
+} from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const benefits = [
+const services = [
+  {
+    icon: Home,
+    title: "Shingle, Metal & Flat Roofing",
+    description:
+      "Complete roof installation and replacement. Whether you need asphalt shingles, standing seam metal, or flat roofing, our installation team delivers precision and durability.",
+  },
+  {
+    icon: Wrench,
+    title: "Roof Repairs",
+    description:
+      "Leaks, storm damage, missing shingles, flashing issues. We diagnose fast and fix it right the first time so your home stays protected.",
+  },
   {
     icon: Shield,
-    title: "Exceptional Durability",
+    title: "Siding, Fascia, Soffit & Eavestroughs",
     description:
-      "Metal roofs can last 40-70 years with proper installation, far outlasting traditional asphalt shingles.",
+      "Vinyl and metal siding installation, plus fascia, soffit, and eavestrough work. One team handles your entire building envelope.",
   },
   {
-    icon: Wind,
-    title: "Weather Resistance",
+    icon: Thermometer,
+    title: "Insulation",
     description:
-      "Engineered to withstand Nova Scotia's coastal storms, heavy snow, and temperature extremes.",
+      "Blow-in, batt, and wall insulation to keep your home comfortable year-round. Government rebates may apply to help offset costs.",
   },
   {
-    icon: Zap,
-    title: "Energy Efficient",
+    icon: Sun,
+    title: "Solar-Ready Roof Upgrades",
     description:
-      "Reflective properties help reduce cooling costs in summer and provide excellent insulation.",
+      "Preparing your roof for solar panels or maintaining existing solar systems. Future-proof your home while you upgrade.",
   },
   {
-    icon: Leaf,
-    title: "Environmentally Friendly",
+    icon: Search,
+    title: "Free Annual Drone Inspections",
     description:
-      "100% recyclable at end of life, and often made from recycled materials.",
+      "Every job comes with complimentary annual drone inspections so you always know the condition of your roof.",
   },
+];
+
+const whyChooseUs = [
+  { icon: Award, text: "GAF-certified - top 5% of roofers in Canada" },
+  { icon: Shield, text: "Up to 7-year labour warranty + 50-year materials warranty" },
+  { icon: Clock, text: "Free quote within 48 hours for HRM & surrounding areas" },
+  { icon: Zap, text: "Year-round installations at competitive rates" },
+  { icon: CreditCard, text: "Flexible financing - don't pay for 3 months" },
+  { icon: Shield, text: "Fully insured | Safety Nova Scotia member" },
+  { icon: Star, text: "5-star reviews | Experienced with government & residential projects" },
+  { icon: Users, text: "One team for everything - no juggling multiple contractors" },
 ];
 
 const faqs = [
   {
-    question: "How long does a metal roof last?",
+    question: "How long does a roof replacement take?",
     answer:
-      "With proper installation and minimal maintenance, a quality metal roof can last 40-70 years. This is significantly longer than traditional asphalt shingles, which typically need replacement every 15-25 years. Our installations are designed to maximize longevity in Nova Scotia's climate.",
+      "A typical residential roof replacement takes 2-5 days depending on size and complexity. We provide a detailed timeline during your estimate and keep you informed throughout. Our installation team works efficiently to minimize disruption to your daily routine.",
   },
   {
-    question: "Can metal roofing withstand Nova Scotia's weather?",
+    question: "Do you handle both roofing and siding on the same project?",
     answer:
-      "Absolutely. Metal roofing is ideal for our Maritime climate. It's engineered to handle heavy snow loads, resist high winds (up to 140+ mph depending on the system), and won't crack or warp with temperature fluctuations. The interlocking panels shed snow and ice effectively.",
+      "Absolutely. That is one of our biggest advantages. Instead of coordinating with multiple contractors, our team handles roofing, siding, insulation, fascia, soffit, and eavestroughs. One point of contact, one schedule, one team that takes full responsibility.",
   },
   {
-    question: "Is metal roofing noisy during rain?",
+    question: "What insulation types do you offer?",
     answer:
-      "Modern metal roofing systems, when properly installed with solid sheathing and underlayment, are no noisier than other roofing materials during rain. The insulation and attic space further dampen any sound.",
+      "We install blow-in insulation, batt insulation, and wall insulation. We will assess your home and recommend the best option for your situation. Government rebates may apply depending on the type and scope of work, and we can help you navigate those programs.",
   },
   {
-    question: "What colours and styles are available?",
+    question: "Are you GAF-certified?",
     answer:
-      "We offer a wide range of colours and profiles to complement any home style. From traditional standing seam to panels that mimic shingles, slate, or wood shake. We'll help you choose the best option for your home's architecture.",
+      "Yes. Our installation team is GAF-certified, which places us in the top 5% of roofers in Canada. This certification means we can offer extended manufacturer warranties, including up to 50 years on materials. It is a standard we take seriously.",
   },
   {
-    question: "How long does installation take?",
+    question: "Do you offer financing?",
     answer:
-      "Installation time varies based on roof size and complexity. A typical residential installation takes 2-5 days. We'll provide a detailed timeline during your estimate and keep you informed throughout the process.",
+      "Yes. We offer flexible financing options including a 3-month payment deferral. We believe quality exterior work should be accessible, and we will work with you to find a payment plan that fits your budget.",
   },
   {
-    question: "What's included in your metal roofing service?",
+    question: "What areas do you serve?",
     answer:
-      "Our service includes a thorough inspection, removal of old roofing (if needed), installation of underlayment and flashing, professional installation of your new metal roof, cleanup, and a final walkthrough. We handle all aspects of the project.",
+      "We serve Halifax and the surrounding Halifax Regional Municipality (HRM). Whether you are in Dartmouth, Bedford, Sackville, or elsewhere in the HRM, our team will come to you with a free estimate within 48 hours.",
+  },
+  {
+    question: "How do I know if I need a repair or a full replacement?",
+    answer:
+      "We will walk you through your options honestly, with no pressure and no upselling. After our inspection (including a complimentary drone assessment), we will give you a clear recommendation. Sometimes a targeted repair is all you need, and we will tell you that.",
   },
 ];
 
 const galleryImages = [
-  { src: "/images/metalroof.jpg", alt: "Metal roof installation" },
-  { src: "/images/metalroof1.jpg", alt: "Standing seam metal roof" },
-  { src: "/images/mroof.jpg", alt: "Metal roofing detail" },
+  { src: "/images/img_037a1c06ddef.jpg", alt: "Standing seam metal roof installation on residential home" },
+  { src: "/images/img_0e371c1b90e9.jpg", alt: "Aerial drone view of completed metal roof in Brookside, NS" },
+  { src: "/images/img_ec2ea89bf6be.jpg", alt: "Standing seam metal roofing detail and ridge cap" },
+  { src: "/images/img_9c5ed483a923.png", alt: "Commercial metal roofing and wall cladding" },
+  { src: "/images/img_304b008edcb1.jpg", alt: "Vinyl siding installation on residential home" },
+  { src: "/images/img_6ac484e66ff4.jpg", alt: "Vinyl siding close-up during installation" },
+  { src: "/images/img_ae71ce807cb4.jpg", alt: "Siding and eavestrough work on two-storey home" },
+  { src: "/images/img_bb20814515b3.jpg", alt: "Vinyl siding gable detail with decorative vent" },
+  { src: "/images/img_dbee0d1ea2c7.jpg", alt: "Complete siding installation on grey home exterior" },
+  { src: "/images/img_dd1091af7f20.jpg", alt: "Upper storey siding over brick facade" },
+  { src: "/images/img_284c881383f9.jpg", alt: "Metal siding and roofing on outbuilding" },
+  { src: "/images/img_15c984a7053e.jpg", alt: "Blow-in attic insulation installation" },
+  { src: "/images/img_e5f6e4d8623e.jpg", alt: "Insulation performance diagram showing summer and winter benefits" },
 ];
 
 export default function MetalRoofing() {
   const contentRef = useScrollReveal();
   const galleryRef = useScrollReveal();
   const ctaRef = useScrollReveal();
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [galleryPage, setGalleryPage] = useState(0);
+
+  const imagesPerPage = 4;
+  const totalPages = Math.ceil(galleryImages.length / imagesPerPage);
+  const visibleImages = galleryImages.slice(
+    galleryPage * imagesPerPage,
+    galleryPage * imagesPerPage + imagesPerPage
+  );
+
+  function openLightbox(globalIndex: number): void {
+    setLightboxIndex(globalIndex);
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox(): void {
+    setLightboxIndex(null);
+    document.body.style.overflow = "";
+  }
+
+  function prevImage(): void {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex - 1 + galleryImages.length) % galleryImages.length);
+  }
+
+  function nextImage(): void {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex + 1) % galleryImages.length);
+  }
 
   return (
     <div className="pb-16 md:pb-0">
@@ -91,8 +177,8 @@ export default function MetalRoofing() {
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/images/metalroof.jpg"
-            alt="Premium metal roofing"
+            src="/images/img_037a1c06ddef.jpg"
+            alt="Professional roofing installation by Versatile Home Solutions"
             className="w-full h-full object-cover hero-zoom"
           />
           <div
@@ -103,200 +189,230 @@ export default function MetalRoofing() {
         <div className="container relative z-10">
           <div className="max-w-2xl">
             <p className="glass hero-slide-down inline-block px-4 py-1.5 rounded-full font-accent text-[oklch(0.78_0.18_88)] text-sm tracking-wider mb-4">
-              Our Primary Service
+              GAF-Certified | Fully Insured
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-              Metal Roofing Excellence
+              Roofing, Siding &<br />Insulation
             </h1>
             <p className="text-lg text-white/80 mb-8">
-              Built to withstand Nova Scotia's demanding weather for decades.
-              Our metal roofing solutions combine durability, energy efficiency,
-              and lasting beauty.
+              At Versatile Home Solutions, we take the stress out of home exterior projects.
+              From roofing and siding to insulation and repairs, we handle it all so you
+              don't have to coordinate with five different contractors.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="btn-3d text-white font-semibold"
-            >
-              <Link href="/contact">
-                Request a Free Estimate
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="btn-3d text-white font-semibold"
+              >
+                <Link href="/contact">
+                  Get a FREE Quote
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 font-semibold"
+              >
+                <a href="tel:+19024449227">
+                  Call (902) 444-9227
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Services Grid */}
       <section className="py-16 md:py-24 bg-section-light">
         <div className="container" ref={contentRef}>
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2 fade-in">
+          <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Our Services
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              One team for your entire building envelope. Our installation team is GAF-certified,
+              fully insured, and proud to serve Halifax and the surrounding HRM.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 fade-in-stagger">
+            {services.map((service) => (
+              <Card key={service.title} className="card-3d border-0 shadow-md fade-in">
+                <CardContent className="p-6">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4 icon-pop">
+                    <service.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    {service.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Why Choose Us */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="fade-in">
               <h2 className="text-3xl font-bold text-foreground mb-6">
-                Why Choose Metal Roofing?
+                Why Homeowners Choose Us
               </h2>
-              <div className="prose prose-lg max-w-none text-muted-foreground mb-8">
-                <p>
-                  Metal roofing is our specialty at Versatile Home Solutions.
-                  We've seen firsthand how Nova Scotia's weather can challenge
-                  traditional roofing materials—the coastal storms, heavy snow,
-                  ice dams, and dramatic temperature swings. Metal roofing is
-                  engineered to handle it all.
-                </p>
-                <p>
-                  When you invest in a metal roof, you're investing in decades
-                  of protection. Unlike asphalt shingles that need replacement
-                  every 15-25 years, a properly installed metal roof can protect
-                  your home for 40 years or more. That's not just better for
-                  your wallet—it's better for the environment.
-                </p>
-                <p>
-                  Our team brings expertise and genuine pride to every metal
-                  roofing project. We use premium materials, follow
-                  manufacturer specifications precisely, and ensure every detail
-                  is right. Your roof is your home's first line of defence—we
-                  treat it that way.
-                </p>
-              </div>
-
-              {/* Benefits Grid */}
-              <div className="grid sm:grid-cols-2 gap-6 mb-12 fade-in-stagger">
-                {benefits.map((benefit) => (
-                  <Card key={benefit.title} className="card-3d border-0 shadow-md fade-in">
-                    <CardContent className="p-6">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[oklch(0.28_0.06_250)] text-white mb-4 icon-pop">
-                        <benefit.icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground mb-2">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm">
-                        {benefit.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* What's Included */}
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                What's Included
-              </h3>
-              <ul className="space-y-3 mb-12">
-                {[
-                  "Comprehensive roof inspection and assessment",
-                  "Detailed written estimate with no hidden costs",
-                  "Removal and disposal of existing roofing (if needed)",
-                  "Installation of premium underlayment and ice/water shield",
-                  "Professional installation of your chosen metal roofing system",
-                  "All necessary flashing, trim, and ventilation",
-                  "Complete cleanup and debris removal",
-                  "Final walkthrough and quality inspection",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-[oklch(0.65_0.18_88)] shrink-0 mt-0.5" />
-                    <span className="text-foreground">{item}</span>
+              <p className="text-muted-foreground mb-8">
+                Not sure if you need a repair or a full replacement? We will walk you through
+                your options honestly. No pressure, no upselling.
+              </p>
+              <ul className="space-y-4">
+                {whyChooseUs.map((item) => (
+                  <li key={item.text} className="flex items-start gap-3">
+                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[oklch(0.28_0.06_250)] text-white shrink-0 mt-0.5">
+                      <item.icon className="h-4 w-4" />
+                    </div>
+                    <span className="text-foreground font-medium">{item.text}</span>
                   </li>
                 ))}
               </ul>
-
-              {/* FAQ Section */}
-              <h3 className="text-2xl font-bold text-foreground mb-6">
-                Frequently Asked Questions
-              </h3>
-              <Accordion type="single" collapsible className="mb-12">
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-semibold">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
             </div>
-
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
-                {/* CTA Card */}
-                <Card className="bg-[oklch(0.28_0.06_250)] text-white border-0">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-4">
-                      Ready for a New Roof?
-                    </h3>
-                    <p className="text-white/80 mb-6">
-                      Get a free, no-obligation estimate for your metal roofing
-                      project. We'll assess your needs and provide a detailed
-                      quote.
-                    </p>
-                    <Button
-                      asChild
-                      className="w-full btn-3d text-white font-semibold"
-                    >
-                      <Link href="/contact">
-                        Request a Free Estimate
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Related Services */}
-                <Card className="border-0 shadow-md">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-foreground mb-4">
-                      Related Services
-                    </h3>
-                    <ul className="space-y-3">
-                      <li>
-                        <Link
-                          href="/services/sheds-outbuildings"
-                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.65_0.18_88)] transition-colors"
-                        >
-                          Sheds & Outbuildings →
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/services"
-                          className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.65_0.18_88)] transition-colors"
-                        >
-                          View All Services →
-                        </Link>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
+            <div className="fade-in">
+              <div className="rounded-xl overflow-hidden shadow-lg">
+                <img
+                  src="/images/img_0e371c1b90e9.jpg"
+                  alt="Aerial view of completed metal roof by Versatile Home Solutions"
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Gallery Strip */}
-      <section className="py-12 bg-section-muted" ref={galleryRef}>
+      {/* Gallery */}
+      <section className="py-12 md:py-16 bg-section-muted" ref={galleryRef}>
         <div className="container">
           <h3 className="text-2xl font-bold text-foreground mb-6 text-center fade-in">
-            Our Metal Roofing Work
+            Our Roofing, Siding & Insulation Work
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in-stagger">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="gallery-item fade-in relative aspect-video overflow-hidden rounded-lg group"
+          <div className="relative fade-in">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {visibleImages.map((image, index) => {
+                const globalIndex = galleryPage * imagesPerPage + index;
+                return (
+                  <div
+                    key={globalIndex}
+                    className="gallery-item relative aspect-video overflow-hidden rounded-lg group cursor-pointer"
+                    onClick={() => openLightbox(globalIndex)}
+                    onKeyDown={(e) => e.key === "Enter" && openLightbox(globalIndex)}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`View ${image.alt}`}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <Search className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Carousel Controls */}
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <button
+                onClick={() => setGalleryPage(Math.max(0, galleryPage - 1))}
+                disabled={galleryPage === 0}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[oklch(0.28_0.06_250)] text-white disabled:opacity-30 transition-opacity hover:opacity-80"
+                aria-label="Previous gallery page"
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-            ))}
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <span className="text-sm text-muted-foreground font-medium">
+                {galleryPage + 1} / {totalPages}
+              </span>
+              <button
+                onClick={() => setGalleryPage(Math.min(totalPages - 1, galleryPage + 1))}
+                disabled={galleryPage >= totalPages - 1}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[oklch(0.28_0.06_250)] text-white disabled:opacity-30 transition-opacity hover:opacity-80"
+                aria-label="Next gallery page"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+          onClick={closeLightbox}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "ArrowRight") nextImage();
+          }}
+          role="dialog"
+          aria-label="Image gallery viewer"
+          tabIndex={0}
+        >
+          <button
+            className="absolute top-4 right-4 text-white w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 z-10"
+            onClick={closeLightbox}
+            aria-label="Close gallery viewer"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 z-10"
+            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 z-10"
+            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+            aria-label="Next image"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+          <img
+            src={galleryImages[lightboxIndex].src}
+            alt={galleryImages[lightboxIndex].alt}
+            className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-20 bg-section-light">
+        <div className="container max-w-3xl">
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center fade-in">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" collapsible className="fade-in">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left font-semibold">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
@@ -305,12 +421,14 @@ export default function MetalRoofing() {
         <div className="container">
           <div className="text-center max-w-3xl mx-auto fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Protect Your Home with Metal Roofing
+              Get a FREE No-Obligation Quote
             </h2>
-            <p className="text-white/90 text-lg mb-8">
-              Ready to invest in a roof that will last for decades? Contact us
-              today for a free estimate and discover why metal roofing is the
-              smart choice for Nova Scotia homes.
+            <p className="text-white/90 text-lg mb-4">
+              We respond within 48 hours. Not sure if you need a repair or a full
+              replacement? We will walk you through your options honestly.
+            </p>
+            <p className="text-white/70 mb-8">
+              No pressure. No upselling. Just honest advice from a team that stands behind their work.
             </p>
             <Button
               asChild

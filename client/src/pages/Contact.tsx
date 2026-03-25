@@ -22,7 +22,9 @@ import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
-  { value: "metal-roofing", label: "Metal Roofing" },
+  { value: "roofing", label: "Roofing" },
+  { value: "siding", label: "Siding, Fascia & Soffit" },
+  { value: "insulation", label: "Insulation" },
   { value: "decks", label: "Decks" },
   { value: "sheds-outbuildings", label: "Sheds & Outbuildings" },
   { value: "fences", label: "Fences" },

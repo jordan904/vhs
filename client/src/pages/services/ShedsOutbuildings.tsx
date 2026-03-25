@@ -195,10 +195,10 @@ export default function ShedsOutbuildings() {
                     <ul className="space-y-3">
                       <li>
                         <Link
-                          href="/services/metal-roofing"
+                          href="/roofing"
                           className="hover-slide-right-sm inline-block text-[oklch(0.28_0.06_250)] hover:text-[oklch(0.65_0.18_88)] transition-colors"
                         >
-                          Metal Roofing →
+                          Roofing, Siding & Insulation →
                         </Link>
                       </li>
                       <li>

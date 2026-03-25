@@ -1,5 +1,7 @@
 const marqueeItems = [
-  "Metal Roofing",
+  "Roofing",
+  "Siding & Fascia",
+  "Insulation",
   "Custom Decks",
   "Sheds & Outbuildings",
   "Fences",

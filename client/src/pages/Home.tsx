@@ -24,11 +24,11 @@ import { useCountUp } from "@/hooks/useCountUp";
 
 const exteriorServices = [
   {
-    title: "Metal Roofing",
+    title: "Roofing, Siding & Insulation",
     description:
-      "Durable, weather-resistant metal roofing built to withstand Nova Scotia's harshest conditions.",
-    image: "/images/metalroof.jpg",
-    href: "/services/metal-roofing",
+      "GAF-certified roofing, siding, and insulation. One team for your entire building envelope.",
+    image: "/images/img_037a1c06ddef.jpg",
+    href: "/roofing",
   },
   {
     title: "Decks",
@@ -88,7 +88,7 @@ const processSteps = [
 ];
 
 const galleryImages = [
-  { src: "/images/metalroof1.jpg", alt: "Metal roofing project" },
+  { src: "/images/img_037a1c06ddef.jpg", alt: "Metal roofing project" },
   { src: "/images/fence1.jpg", alt: "Fence installation" },
   { src: "/images/pergola.jpg", alt: "Pergola construction" },
   { src: "/images/catio.jpg", alt: "Catio project" },
@@ -195,9 +195,9 @@ export default function Home() {
               "Your Vision Is Our Priority"
             </p>
             <p className="text-lg text-white/80 mb-8 max-w-xl">
-              From premium metal roofing to custom decks, sheds, and fences—we
-              bring quality construction to homeowners across the Annapolis
-              Valley and surrounding Nova Scotia communities.
+              From roofing and siding to custom decks, sheds, and fences, we
+              bring quality construction to homeowners across Halifax
+              and the surrounding HRM.
             </p>
 
             {/* Stat Counters */}
@@ -252,31 +252,29 @@ export default function Home() {
       {/* Marquee */}
       <Marquee />
 
-      {/* Primary Service Spotlight - Metal Roofing */}
+      {/* Primary Service Spotlight - Roofing, Siding & Insulation */}
       <section className="py-16 md:py-24 bg-section-light" ref={spotlightRef}>
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1 fade-in">
               <p className="font-accent text-[oklch(0.65_0.18_88)] text-sm tracking-wider mb-3">
-                Our Primary Service
+                GAF-Certified | Fully Insured
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Metal Roofing Excellence
+                Roofing, Siding & Insulation
               </h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                Metal roofing is our specialty. Built to withstand Nova Scotia's
-                demanding weather—from coastal storms to heavy snow loads—our
-                metal roofs provide decades of protection with minimal
-                maintenance. Energy-efficient, fire-resistant, and available in
-                a variety of styles and colours to complement your home.
+                Our installation team is GAF-certified, fully insured, and handles
+                everything from shingle and metal roofing to vinyl siding, insulation,
+                and repairs. One team, no juggling multiple contractors.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "40+ year lifespan with proper installation",
-                  "Superior wind and weather resistance",
-                  "Energy-efficient reflective properties",
-                  "Low maintenance requirements",
-                  "Environmentally friendly and recyclable",
+                  "GAF-certified - top 5% of roofers in Canada",
+                  "Up to 7-year labour + 50-year materials warranty",
+                  "Free quote within 48 hours for HRM",
+                  "Flexible financing - don't pay for 3 months",
+                  "Free annual drone inspections with every job",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-[oklch(0.65_0.18_88)] shrink-0 mt-0.5" />
@@ -289,8 +287,8 @@ export default function Home() {
                   asChild
                   className="btn-3d-inverted text-white font-semibold"
                 >
-                  <Link href="/services/metal-roofing">
-                    Learn More About Metal Roofing
+                  <Link href="/roofing">
+                    Learn More
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -306,13 +304,13 @@ export default function Home() {
             <div className="order-1 lg:order-2 fade-in">
               <div className="relative">
                 <img
-                  src="/images/metalroof.jpg"
-                  alt="Premium metal roofing installation"
+                  src="/images/img_037a1c06ddef.jpg"
+                  alt="Standing seam metal roof installation in Halifax"
                   className="w-full h-auto rounded-lg shadow-xl"
                 />
                 <div className="absolute -bottom-4 -left-4 bg-[oklch(0.28_0.06_250)] text-white p-4 rounded-lg shadow-lg">
-                  <p className="font-accent text-sm">Built for</p>
-                  <p className="text-2xl font-bold">40+ Years</p>
+                  <p className="font-accent text-sm">Up to</p>
+                  <p className="text-2xl font-bold">50yr Warranty</p>
                 </div>
               </div>
             </div>
