@@ -238,7 +238,7 @@ export default function MetalRoofing() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 fade-in-stagger">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 fade-in-stagger">
             {services.map((service) => (
               <Card key={service.title} className="card-3d border-0 shadow-md fade-in">
                 <CardContent className="p-6">
