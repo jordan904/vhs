@@ -196,8 +196,7 @@ export default function Home() {
             </p>
             <p className="text-lg text-white/80 mb-8 max-w-xl">
               From roofing and siding to custom decks, sheds, and fences, we
-              bring quality construction to homeowners across Halifax
-              and the surrounding HRM.
+              bring quality construction to homeowners from Windsor to Digby.
             </p>
 
             {/* Stat Counters */}
@@ -272,7 +271,7 @@ export default function Home() {
                 {[
                   "GAF-certified - top 5% of roofers in Canada",
                   "Up to 7-year labour + 50-year materials warranty",
-                  "Free quote within 48 hours for HRM",
+                  "Free quote within 48 hours from Windsor to Digby",
                   "Flexible financing - don't pay for 3 months",
                   "Free annual drone inspections with every job",
                 ].map((item) => (
@@ -305,7 +304,7 @@ export default function Home() {
               <div className="relative">
                 <img
                   src="/images/img_037a1c06ddef.jpg"
-                  alt="Standing seam metal roof installation in Halifax"
+                  alt="Standing seam metal roof installation in Nova Scotia"
                   className="w-full h-auto rounded-lg shadow-xl"
                 />
                 <div className="absolute -bottom-4 -left-4 bg-[oklch(0.28_0.06_250)] text-white p-4 rounded-lg shadow-lg">
@@ -524,10 +523,9 @@ export default function Home() {
                 Proudly Serving Nova Scotia
               </h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                Based in the Annapolis Valley, we serve homeowners throughout
-                the region and surrounding Nova Scotia communities. Our local
-                expertise means we understand the unique challenges of building
-                in our Maritime climate.
+                Based in the Annapolis Valley, we serve homeowners from Windsor
+                to Digby. Our local expertise means we understand the unique
+                challenges of building in our Maritime climate.
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <img

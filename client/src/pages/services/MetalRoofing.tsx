@@ -75,7 +75,7 @@ const services = [
 const whyChooseUs = [
   { icon: Award, text: "GAF-certified - top 5% of roofers in Canada" },
   { icon: Shield, text: "Up to 7-year labour warranty + 50-year materials warranty" },
-  { icon: Clock, text: "Free quote within 48 hours for HRM & surrounding areas" },
+  { icon: Clock, text: "Free quote within 48 hours from Windsor to Digby" },
   { icon: Zap, text: "Year-round installations at competitive rates" },
   { icon: CreditCard, text: "Flexible financing - don't pay for 3 months" },
   { icon: Shield, text: "Fully insured | Safety Nova Scotia member" },
@@ -112,7 +112,7 @@ const faqs = [
   {
     question: "What areas do you serve?",
     answer:
-      "We serve Halifax and the surrounding Halifax Regional Municipality (HRM). Whether you are in Dartmouth, Bedford, Sackville, or elsewhere in the HRM, our team will come to you with a free estimate within 48 hours.",
+      "We serve communities from Windsor to Digby across the Annapolis Valley and surrounding areas. Our team will come to you with a free estimate within 48 hours.",
   },
   {
     question: "How do I know if I need a repair or a full replacement?",
@@ -216,8 +216,8 @@ export default function MetalRoofing() {
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 font-semibold"
               >
-                <a href="tel:+19024449227">
-                  Call (902) 444-9227
+                <a href="tel:+19028245333">
+                  Call (902) 824-5333
                 </a>
               </Button>
             </div>
@@ -234,7 +234,7 @@ export default function MetalRoofing() {
             </h2>
             <p className="text-muted-foreground text-lg">
               One team for your entire building envelope. Our installation team is GAF-certified,
-              fully insured, and proud to serve Halifax and the surrounding HRM.
+              fully insured, and proud to serve communities from Windsor to Digby.
             </p>
           </div>
 

@@ -251,7 +251,7 @@ export default function Layout({ children }: LayoutProps) {
               </Link>
               <p className="text-white/70 text-sm leading-relaxed mb-4">
                 Roofing, siding, insulation, decks, sheds, fences, and exterior
-                projects for homeowners in Halifax and the surrounding HRM.
+                projects for homeowners from Windsor to Digby.
               </p>
               <p className="text-[oklch(0.78_0.18_88)] font-medium italic">
                 "Your Vision Is Our Priority"
