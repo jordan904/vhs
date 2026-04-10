@@ -50,6 +50,7 @@ export default function Contact() {
     timeframe: "",
     consent: false,
   });
+  const [photos, setPhotos] = useState<FileList | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -108,21 +109,26 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
+      const body = new FormData();
+      body.append("name", formData.fullName);
+      body.append("email", formData.email);
+      body.append("phone", formData.phone);
+      body.append("address", formData.address);
+      body.append("service", formData.service);
+      body.append("timeframe", formData.timeframe);
+      body.append("message", formData.description);
+      if (photos) {
+        for (let i = 0; i < photos.length; i++) {
+          body.append("photos", photos[i]);
+        }
+      }
+
       const res = await fetch("https://formspree.io/f/mgonjzkv", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: JSON.stringify({
-          name: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          address: formData.address,
-          service: formData.service,
-          timeframe: formData.timeframe,
-          message: formData.description,
-        }),
+        body,
       });
 
       if (!res.ok) throw new Error("Failed to submit");
@@ -427,6 +433,7 @@ export default function Contact() {
                         multiple
                         accept="image/*"
                         className="cursor-pointer"
+                        onChange={(e) => setPhotos(e.target.files)}
                       />
                       <p className="text-muted-foreground text-sm">
                         Photos help us understand your project better. You can
