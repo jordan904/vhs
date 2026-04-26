@@ -49,6 +49,7 @@ export default function Contact() {
     description: "",
     timeframe: "",
     consent: false,
+    honeypot: "",
   });
   const [photos, setPhotos] = useState<FileList | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -117,13 +118,17 @@ export default function Contact() {
       body.append("service", formData.service);
       body.append("timeframe", formData.timeframe);
       body.append("message", formData.description);
+      body.append("website", formData.honeypot);
       if (photos) {
         for (let i = 0; i < photos.length; i++) {
           body.append("photos", photos[i]);
         }
       }
 
-      const res = await fetch("https://formspree.io/f/mgonjzkv", {
+      const endpoint = import.meta.env.VITE_FORM_ENDPOINT;
+      if (!endpoint) throw new Error("Form endpoint is not configured");
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Accept": "application/json",
@@ -256,6 +261,23 @@ export default function Contact() {
                     Estimate Request Form
                   </h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Honeypot - hidden from real users */}
+                    <div
+                      aria-hidden="true"
+                      style={{ position: "absolute", left: "-9999px", top: 0 }}
+                    >
+                      <label htmlFor="hp-website">Website</label>
+                      <input
+                        type="text"
+                        id="hp-website"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={formData.honeypot}
+                        onChange={(e) => handleInputChange("honeypot", e.target.value)}
+                      />
+                    </div>
+
                     {/* Name */}
                     <div className="space-y-2">
                       <Label htmlFor="fullName">

@@ -1,0 +1,13 @@
+name = "vhs-inquiry"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+workers_dev = true
+
+[vars]
+NOTIFY_TO = "jordan@versatilehomesolutions.ca"
+FROM_ADDRESS = "Versatile Home Solutions <hello@versatilehomesolutions.ca>"
+REPLY_TO = "jordan@versatilehomesolutions.ca"
+ALLOWED_ORIGINS = "https://versatilehomesolutions.ca,https://www.versatilehomesolutions.ca,http://localhost:5173,http://localhost:3000"
+
+# RESEND_API_KEY is set as a secret via:
+#   wrangler secret put RESEND_API_KEY
