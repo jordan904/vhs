@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const faqs = [
@@ -54,6 +55,11 @@ export default function LvpFlooring() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="LVP Flooring Installation | Versatile Home Solutions NS"
+        description="Luxury vinyl plank installation across the Annapolis Valley. Waterproof, scratch-resistant, wood-look flooring. Professional install over carpet, hardwood, laminate, or tile."
+        path="/services/lvp-flooring"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">

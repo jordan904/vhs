@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, MapPin, CheckCircle } from "lucide-react";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const communities = [
@@ -35,6 +36,11 @@ export default function ServiceArea() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Service Area | Annapolis Valley & Digby Area NS | VHS"
+        description="Versatile Home Solutions serves Windsor, Wolfville, Kentville, New Minas, Berwick, Middleton, Bridgetown, Annapolis Royal, Digby, and surrounding Nova Scotia communities."
+        path="/service-area"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0">

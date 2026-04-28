@@ -28,13 +28,16 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install chromium --with-deps
+
       - name: Build
         env:
           VITE_FORM_ENDPOINT: ${{ secrets.VITE_FORM_ENDPOINT }}
         run: pnpm run build
 
-      - name: Create 404.html for SPA routing
-        run: cp dist/public/index.html dist/public/404.html
+      - name: Use prerendered NotFound as the 404.html fallback
+        run: cp dist/public/404/index.html dist/public/404.html
 
       - name: Add CNAME file
         run: echo "versatilehomesolutions.ca" > dist/public/CNAME

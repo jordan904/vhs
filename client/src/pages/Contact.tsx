@@ -20,6 +20,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Phone, Mail, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
@@ -159,6 +160,12 @@ export default function Contact() {
   if (isSubmitted) {
     return (
       <div className="pb-16 md:pb-0">
+        <PageMeta
+          title="Estimate Request Received | Versatile Home Solutions"
+          description="Thanks for reaching out. We'll review your estimate request and be in touch within 1-2 business days."
+          path="/contact"
+          noindex
+        />
         {/* Hero Section */}
         <section className="relative py-20 md:py-28">
           <div className="absolute inset-0">
@@ -227,6 +234,11 @@ export default function Contact() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Free Estimate | Versatile Home Solutions | Annapolis Valley"
+        description="Request a free, no-obligation estimate for roofing, siding, decks, sheds, fences, or LVP flooring across the Annapolis Valley and Nova Scotia. Reply within 1-2 business days."
+        path="/contact"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0">

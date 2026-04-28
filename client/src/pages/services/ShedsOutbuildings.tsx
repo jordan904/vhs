@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const faqs = [
@@ -55,6 +56,11 @@ export default function ShedsOutbuildings() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Sheds & Outbuildings | Versatile Home Solutions NS"
+        description="Custom-built sheds, workshops, greenhouses, and animal shelters across the Annapolis Valley. Site prep, electrical, insulation, and matching exterior finishes available."
+        path="/services/sheds-outbuildings"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">

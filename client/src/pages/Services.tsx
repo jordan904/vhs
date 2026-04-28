@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Star } from "lucide-react";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
@@ -84,6 +85,11 @@ export default function Services() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Our Services | Versatile Home Solutions | Annapolis Valley"
+        description="Roofing, siding, insulation, custom decks, sheds, fences, and LVP flooring across the Annapolis Valley and surrounding Nova Scotia. One contractor, complete exterior solutions."
+        path="/services"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">

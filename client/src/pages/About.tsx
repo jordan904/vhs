@@ -6,6 +6,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Heart, MapPin, Wrench } from "lucide-react";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const values = [
@@ -43,6 +44,11 @@ export default function About() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="About Us | Versatile Home Solutions | Annapolis Valley NS"
+        description="Locally-owned home improvement company based in the Annapolis Valley. Quality craftsmanship, customer-first values, and decades of combined experience serving Nova Scotia."
+        path="/about"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">

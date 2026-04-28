@@ -32,6 +32,7 @@ import {
   X,
 } from "lucide-react";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
@@ -174,6 +175,11 @@ export default function MetalRoofing() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Metal Roofing & Siding | Versatile Home Solutions NS"
+        description="GAF-certified metal and shingle roofing, vinyl siding, fascia, soffit, and insulation across the Annapolis Valley. Up to 50-year warranties, free annual drone inspections."
+        path="/services/metal-roofing"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">

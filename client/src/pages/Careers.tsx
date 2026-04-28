@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { toast } from "sonner";
 import {
@@ -184,6 +185,12 @@ export default function Careers() {
   if (isSubmitted) {
     return (
       <div className="pb-16 md:pb-0">
+        <PageMeta
+          title="Application Received | Versatile Home Solutions"
+          description="Thanks for applying. We'll review your application and reach out within a few business days."
+          path="/careers"
+          noindex
+        />
         {/* Hero Section */}
         <section className="relative py-20 md:py-28 overflow-hidden">
           <div className="absolute inset-0">
@@ -243,6 +250,11 @@ export default function Careers() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Careers | Versatile Home Solutions | Nova Scotia"
+        description="Join the Versatile Home Solutions team. Year-round work, competitive pay, and growth opportunities for tradespeople and apprentices in the Annapolis Valley."
+        path="/careers"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">

@@ -20,6 +20,7 @@ import {
 import Marquee from "@/components/Marquee";
 import Lightbox from "@/components/Lightbox";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -164,6 +165,11 @@ export default function Home() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Versatile Home Solutions | Annapolis Valley NS Contractor"
+        description="Locally-owned home improvement contractor serving Windsor to Digby. Metal roofing, siding, insulation, decks, sheds, fences, and LVP flooring. GAF-certified, fully insured."
+        path="/"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background Image with zoom */}

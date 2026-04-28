@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Phone, ClipboardList, Hammer, CheckSquare } from "lucide-react";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const steps = [
@@ -68,6 +69,11 @@ export default function Process() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Our Process | Versatile Home Solutions | Annapolis Valley NS"
+        description="From free consultation to final walkthrough, here's how we run every roofing, siding, deck, shed, fence, or LVP project in the Annapolis Valley and Nova Scotia."
+        path="/process"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 bg-[oklch(0.28_0.06_250)]">
         <div className="container relative z-10">

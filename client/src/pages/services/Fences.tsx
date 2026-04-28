@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { PageMeta } from "@/components/PageMeta";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const faqs = [
@@ -55,6 +56,11 @@ export default function Fences() {
 
   return (
     <div className="pb-16 md:pb-0">
+      <PageMeta
+        title="Fence Installation | Versatile Home Solutions NS"
+        description="Privacy, semi-private, and decorative fence installation across the Annapolis Valley. Pressure-treated, cedar, vinyl, chain link, and ornamental metal in 4ft, 6ft, and 8ft heights."
+        path="/services/fences"
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">
