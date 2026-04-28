@@ -31,6 +31,7 @@ const exteriorServices = [
       "GAF-certified roofing, siding, and insulation. One team for your entire building envelope.",
     image: "img_037a1c06ddef",
     href: "/roofing",
+    cta: "Explore roofing services",
   },
   {
     title: "Decks",
@@ -38,6 +39,7 @@ const exteriorServices = [
       "Custom-built decks that extend your living space and enhance your outdoor enjoyment.",
     image: "deck",
     href: "/services/decks",
+    cta: "Explore deck builds",
   },
   {
     title: "Sheds & Outbuildings",
@@ -45,6 +47,7 @@ const exteriorServices = [
       "Quality storage solutions and outbuildings tailored to your property's needs.",
     image: "shed",
     href: "/services/sheds-outbuildings",
+    cta: "Explore shed options",
   },
   {
     title: "Fences",
@@ -52,6 +55,7 @@ const exteriorServices = [
       "Privacy, security, and curb appeal with expertly installed fencing solutions.",
     image: "fence",
     href: "/services/fences",
+    cta: "Explore fence styles",
   },
 ];
 
@@ -298,7 +302,7 @@ export default function Home() {
                   className="btn-3d-inverted text-white font-semibold"
                 >
                   <Link href="/roofing">
-                    Learn More
+                    Explore roofing services
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -376,7 +380,7 @@ export default function Home() {
                     href={service.href}
                     className="inline-flex items-center text-[oklch(0.28_0.06_250)] font-semibold hover:text-[oklch(0.65_0.18_88)] transition-colors text-sm"
                   >
-                    Learn More
+                    {service.cta}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </CardContent>
@@ -422,7 +426,7 @@ export default function Home() {
                       href="/services/lvp-flooring"
                       className="inline-flex items-center text-[oklch(0.28_0.06_250)] font-semibold hover:text-[oklch(0.65_0.18_88)] transition-colors"
                     >
-                      Learn More
+                      View LVP flooring details
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </div>
@@ -523,7 +527,7 @@ export default function Home() {
               className="btn-3d text-white font-semibold"
             >
               <Link href="/process">
-                Learn More About Our Process
+                See How Our Process Works
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

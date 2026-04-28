@@ -17,6 +17,7 @@ const services = [
       "GAF-certified roofing, vinyl and metal siding, and insulation. One team for your entire building envelope, fully insured with up to 50-year warranties.",
     image: "img_037a1c06ddef",
     href: "/roofing",
+    cta: "Explore roofing services",
     featured: true,
     highlights: [
       "GAF-certified (top 5% in Canada)",
@@ -31,6 +32,7 @@ const services = [
       "Custom-built decks that extend your living space and enhance your outdoor enjoyment. Designed for Nova Scotia's seasons.",
     image: "deck",
     href: "/services/decks",
+    cta: "Explore deck builds",
     highlights: [
       "Custom designs",
       "Quality materials",
@@ -44,6 +46,7 @@ const services = [
       "Quality storage solutions and outbuildings tailored to your property's needs. From garden sheds to workshops.",
     image: "shed",
     href: "/services/sheds-outbuildings",
+    cta: "Explore shed options",
     highlights: [
       "Custom sizes",
       "Durable construction",
@@ -57,6 +60,7 @@ const services = [
       "Privacy, security, and curb appeal with expertly installed fencing solutions. Multiple styles and materials available.",
     image: "fence",
     href: "/services/fences",
+    cta: "Explore fence styles",
     highlights: [
       "Privacy options",
       "Security fencing",
@@ -70,6 +74,7 @@ const services = [
       "Transform your home's interior with beautiful, durable luxury vinyl plank flooring. Waterproof, scratch-resistant, and available in stunning wood-look designs.",
     image: "floor",
     href: "/services/lvp-flooring",
+    cta: "View LVP flooring details",
     highlights: [
       "Waterproof & durable",
       "Realistic wood look",
@@ -181,7 +186,7 @@ export default function Services() {
                         className="bg-[oklch(0.28_0.06_250)] hover:bg-[oklch(0.22_0.06_250)] text-white font-semibold"
                       >
                         <Link href={service.href}>
-                          Learn More
+                          {service.cta}
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
