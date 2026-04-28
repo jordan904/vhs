@@ -98,7 +98,7 @@ export default function Lightbox({
             srcSet={`/images/optimized/${current.name}-1600.webp 1600w, /images/optimized/${current.name}-1200.webp 1200w`}
           />
           <img
-            src={`/images/optimized/${current.name}-1200.jpg`}
+            src={`/images/optimized/${current.name}-800.jpg`}
             alt={current.alt}
             className="lightbox-image max-w-full max-h-[85vh] object-contain rounded-lg"
             loading="eager"

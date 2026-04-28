@@ -405,7 +405,7 @@ export default function MetalRoofing() {
               srcSet={`/images/optimized/${galleryImages[lightboxIndex].name}-1600.webp 1600w, /images/optimized/${galleryImages[lightboxIndex].name}-1200.webp 1200w`}
             />
             <img
-              src={`/images/optimized/${galleryImages[lightboxIndex].name}-1200.jpg`}
+              src={`/images/optimized/${galleryImages[lightboxIndex].name}-800.jpg`}
               alt={galleryImages[lightboxIndex].alt}
               className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
             />

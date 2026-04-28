@@ -24,7 +24,7 @@ import { join, basename, extname } from "node:path";
 const SOURCE_DIR = "client/public/images";
 const OUT_DIR = "client/public/images/optimized";
 const WIDTHS = [400, 800, 1200, 1600] as const;
-const FALLBACK_WIDTH = 1200;
+const FALLBACK_WIDTH = 800;
 
 const HERO_BASENAMES = new Set([
   "hero-bg",
@@ -93,11 +93,10 @@ async function optimizeOne(srcPath: string, outDir: string): Promise<OptimizeRes
     }
   }
 
-  const fallbackWidth = Math.min(sourceWidth, FALLBACK_WIDTH);
-  const fallbackPath = join(outDir, `${name}-${fallbackWidth}.jpg`);
+  const fallbackPath = join(outDir, `${name}-${FALLBACK_WIDTH}.jpg`);
   if (await isOlderThan(fallbackPath, srcPath)) {
     await sharp(srcPath)
-      .resize({ width: fallbackWidth, withoutEnlargement: true })
+      .resize({ width: FALLBACK_WIDTH, withoutEnlargement: true })
       .jpeg({ quality: JPEG_FALLBACK_QUALITY, mozjpeg: true })
       .toFile(fallbackPath);
     const s = await stat(fallbackPath);

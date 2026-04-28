@@ -28,7 +28,7 @@ export interface ResponsiveImageProps {
 }
 
 const DEFAULT_WIDTHS = [400, 800, 1200, 1600];
-const DEFAULT_FALLBACK_WIDTH = 1200;
+const DEFAULT_FALLBACK_WIDTH = 800;
 
 function buildSrcSet(name: string, ext: "avif" | "webp", widths: number[]): string {
   return widths.map((w) => `/images/optimized/${name}-${w}.${ext} ${w}w`).join(", ");
