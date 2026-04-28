@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const faqs = [
@@ -41,10 +42,10 @@ const faqs = [
 ];
 
 const galleryImages = [
-  { src: "/images/fence.jpg", alt: "Privacy fence installation" },
-  { src: "/images/fence1.jpg", alt: "Wood fence detail" },
-  { src: "/images/fence2.jpg", alt: "Fence construction" },
-  { src: "/images/fence3.jpg", alt: "Completed fence project" },
+  { name: "fence", alt: "Privacy fence installation in Nova Scotia" },
+  { name: "fence1", alt: "Wood fence detail by Versatile Home Solutions" },
+  { name: "fence2", alt: "Fence construction in the Annapolis Valley" },
+  { name: "fence3", alt: "Completed fence project" },
 ];
 
 export default function Fences() {
@@ -57,9 +58,13 @@ export default function Fences() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/fence.jpg"
-            alt="Privacy fence installation"
+          <ResponsiveImage
+            name="fence"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div
@@ -241,9 +246,12 @@ export default function Fences() {
                 key={index}
                 className="gallery-item fade-in relative aspect-square overflow-hidden rounded-lg group"
               >
-                <img
-                  src={image.src}
+                <ResponsiveImage
+                  name={image.name}
                   alt={image.alt}
+                  width={800}
+                  height={800}
+                  sizes="(max-width: 768px) 50vw, 25vw"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

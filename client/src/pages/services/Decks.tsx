@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const faqs = [
@@ -41,9 +42,9 @@ const faqs = [
 ];
 
 const galleryImages = [
-  { src: "/images/deck.jpg", alt: "Custom deck construction" },
-  { src: "/images/pergola.jpg", alt: "Deck with pergola" },
-  { src: "/images/patio.jpg", alt: "Outdoor living space" },
+  { name: "deck", alt: "Custom deck construction in the Annapolis Valley" },
+  { name: "pergola", alt: "Deck with pergola in Nova Scotia" },
+  { name: "patio", alt: "Outdoor living space deck build" },
 ];
 
 export default function Decks() {
@@ -56,9 +57,13 @@ export default function Decks() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/deck.jpg"
-            alt="Custom deck construction"
+          <ResponsiveImage
+            name="deck"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div
@@ -239,9 +244,12 @@ export default function Decks() {
                 key={index}
                 className="gallery-item fade-in relative aspect-video overflow-hidden rounded-lg group"
               >
-                <img
-                  src={image.src}
+                <ResponsiveImage
+                  name={image.name}
                   alt={image.alt}
+                  width={800}
+                  height={450}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

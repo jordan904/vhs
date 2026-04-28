@@ -19,6 +19,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Phone, Mail, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
@@ -161,9 +162,13 @@ export default function Contact() {
         {/* Hero Section */}
         <section className="relative py-20 md:py-28">
           <div className="absolute inset-0">
-            <img
-              src="/images/contact-hero.jpg"
-              alt="Nova Scotia home"
+            <ResponsiveImage
+              name="contact-hero"
+              alt=""
+              width={1600}
+              height={900}
+              priority
+              sizes="100vw"
               className="w-full h-full object-cover hero-zoom"
             />
             <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
@@ -225,9 +230,13 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0">
-          <img
-            src="/images/contact-hero.jpg"
-            alt="Nova Scotia home"
+          <ResponsiveImage
+            name="contact-hero"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />

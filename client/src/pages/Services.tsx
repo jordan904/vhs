@@ -6,6 +6,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Star } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
@@ -13,7 +14,7 @@ const services = [
     title: "Roofing, Siding & Insulation",
     description:
       "GAF-certified roofing, vinyl and metal siding, and insulation. One team for your entire building envelope, fully insured with up to 50-year warranties.",
-    image: "/images/img_037a1c06ddef.jpg",
+    image: "img_037a1c06ddef",
     href: "/roofing",
     featured: true,
     highlights: [
@@ -27,7 +28,7 @@ const services = [
     title: "Decks",
     description:
       "Custom-built decks that extend your living space and enhance your outdoor enjoyment. Designed for Nova Scotia's seasons.",
-    image: "/images/deck.jpg",
+    image: "deck",
     href: "/services/decks",
     highlights: [
       "Custom designs",
@@ -40,7 +41,7 @@ const services = [
     title: "Sheds & Outbuildings",
     description:
       "Quality storage solutions and outbuildings tailored to your property's needs. From garden sheds to workshops.",
-    image: "/images/shed.jpg",
+    image: "shed",
     href: "/services/sheds-outbuildings",
     highlights: [
       "Custom sizes",
@@ -53,7 +54,7 @@ const services = [
     title: "Fences",
     description:
       "Privacy, security, and curb appeal with expertly installed fencing solutions. Multiple styles and materials available.",
-    image: "/images/fence.jpg",
+    image: "fence",
     href: "/services/fences",
     highlights: [
       "Privacy options",
@@ -66,7 +67,7 @@ const services = [
     title: "LVP Flooring",
     description:
       "Transform your home's interior with beautiful, durable luxury vinyl plank flooring. Waterproof, scratch-resistant, and available in stunning wood-look designs.",
-    image: "/images/floor.jpg",
+    image: "floor",
     href: "/services/lvp-flooring",
     highlights: [
       "Waterproof & durable",
@@ -86,9 +87,13 @@ export default function Services() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/images/services-hero.jpg"
-            alt="Versatile Home Solutions services"
+          <ResponsiveImage
+            name="services-hero"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
@@ -131,9 +136,12 @@ export default function Services() {
                       index % 2 === 1 ? "lg:col-start-2" : ""
                     }`}
                   >
-                    <img
-                      src={service.image}
-                      alt={service.title}
+                    <ResponsiveImage
+                      name={service.image}
+                      alt={`${service.title} project by Versatile Home Solutions`}
+                      width={1200}
+                      height={800}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="w-full h-full object-cover"
                     />
                     {service.featured && (

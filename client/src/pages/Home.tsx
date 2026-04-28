@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Marquee from "@/components/Marquee";
 import Lightbox from "@/components/Lightbox";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -27,28 +28,28 @@ const exteriorServices = [
     title: "Roofing, Siding & Insulation",
     description:
       "GAF-certified roofing, siding, and insulation. One team for your entire building envelope.",
-    image: "/images/img_037a1c06ddef.jpg",
+    image: "img_037a1c06ddef",
     href: "/roofing",
   },
   {
     title: "Decks",
     description:
       "Custom-built decks that extend your living space and enhance your outdoor enjoyment.",
-    image: "/images/deck.jpg",
+    image: "deck",
     href: "/services/decks",
   },
   {
     title: "Sheds & Outbuildings",
     description:
       "Quality storage solutions and outbuildings tailored to your property's needs.",
-    image: "/images/shed.jpg",
+    image: "shed",
     href: "/services/sheds-outbuildings",
   },
   {
     title: "Fences",
     description:
       "Privacy, security, and curb appeal with expertly installed fencing solutions.",
-    image: "/images/fence.jpg",
+    image: "fence",
     href: "/services/fences",
   },
 ];
@@ -88,12 +89,12 @@ const processSteps = [
 ];
 
 const galleryImages = [
-  { src: "/images/img_037a1c06ddef.jpg", alt: "Metal roofing project" },
-  { src: "/images/fence1.jpg", alt: "Fence installation" },
-  { src: "/images/pergola.jpg", alt: "Pergola construction" },
-  { src: "/images/catio.jpg", alt: "Catio project" },
-  { src: "/images/mroof.jpg", alt: "Metal roof detail" },
-  { src: "/images/patio.jpg", alt: "Patio project" },
+  { name: "img_037a1c06ddef", alt: "Metal roofing project" },
+  { name: "fence1", alt: "Fence installation" },
+  { name: "pergola", alt: "Pergola construction" },
+  { name: "catio", alt: "Catio project" },
+  { name: "mroof", alt: "Metal roof detail" },
+  { name: "patio", alt: "Patio project" },
 ];
 
 const testimonials = [
@@ -167,9 +168,13 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background Image with zoom */}
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/hero-bg.jpg"
+          <ResponsiveImage
+            name="hero-bg"
             alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div className="absolute inset-0" style={{
@@ -302,9 +307,12 @@ export default function Home() {
             </div>
             <div className="order-1 lg:order-2 fade-in">
               <div className="relative">
-                <img
-                  src="/images/img_037a1c06ddef.jpg"
+                <ResponsiveImage
+                  name="img_037a1c06ddef"
                   alt="Standing seam metal roof installation in Nova Scotia"
+                  width={1200}
+                  height={800}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="w-full h-auto rounded-lg shadow-xl"
                 />
                 <div className="absolute -bottom-4 -left-4 bg-[oklch(0.28_0.06_250)] text-white p-4 rounded-lg shadow-lg">
@@ -341,9 +349,12 @@ export default function Home() {
                 className="fade-in group overflow-hidden border-0 card-3d"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
+                  <ResponsiveImage
+                    name={service.image}
+                    alt={`${service.title} project by Versatile Home Solutions`}
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -381,9 +392,12 @@ export default function Home() {
             <Card className="group overflow-hidden border-0 card-3d">
               <div className="grid md:grid-cols-2">
                 <div className="relative h-64 md:h-auto overflow-hidden">
-                  <img
-                    src="/images/floor.jpg"
-                    alt="LVP Flooring installation"
+                  <ResponsiveImage
+                    name="floor"
+                    alt="LVP flooring installation in Annapolis Valley home"
+                    width={1200}
+                    height={800}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:bg-gradient-to-r" />
@@ -529,8 +543,12 @@ export default function Home() {
               </p>
               <div className="flex items-center gap-4 mb-6">
                 <img
-                  src="/images/flags.jpeg"
+                  src="/images/optimized/flags-400.jpg"
                   alt="Canadian and Nova Scotia flags"
+                  width={120}
+                  height={64}
+                  loading="lazy"
+                  decoding="async"
                   className="h-16 w-auto rounded"
                 />
                 <div>
@@ -553,9 +571,12 @@ export default function Home() {
               </Button>
             </div>
             <div className="fade-in relative overflow-hidden rounded-lg">
-              <img
-                src="/images/contact-hero.jpg"
-                alt="Nova Scotia home with metal roof"
+              <ResponsiveImage
+                name="contact-hero"
+                alt="Annapolis Valley home with new metal roof"
+                width={1200}
+                height={800}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full h-auto rounded-lg shadow-xl"
               />
             </div>
@@ -585,9 +606,12 @@ export default function Home() {
                 className="fade-in gallery-item relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
-                <img
-                  src={image.src}
+                <ResponsiveImage
+                  name={image.name}
                   alt={image.alt}
+                  width={800}
+                  height={800}
+                  sizes="(max-width: 768px) 50vw, 33vw"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-[oklch(0.28_0.06_250/0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

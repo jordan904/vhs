@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const faqs = [
@@ -41,10 +42,10 @@ const faqs = [
 ];
 
 const galleryImages = [
-  { src: "/images/shed.jpg", alt: "Custom shed construction" },
-  { src: "/images/greenhouse.jpg", alt: "Greenhouse structure" },
-  { src: "/images/catio.jpg", alt: "Custom catio enclosure" },
-  { src: "/images/catio1.jpg", alt: "Catio outdoor cat enclosure" },
+  { name: "shed", alt: "Custom shed construction in Nova Scotia" },
+  { name: "greenhouse", alt: "Custom greenhouse structure" },
+  { name: "catio", alt: "Custom catio enclosure built by VHS" },
+  { name: "catio1", alt: "Outdoor cat enclosure project" },
 ];
 
 export default function ShedsOutbuildings() {
@@ -57,9 +58,13 @@ export default function ShedsOutbuildings() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/shed.jpg"
-            alt="Custom shed construction"
+          <ResponsiveImage
+            name="shed"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div
@@ -238,9 +243,12 @@ export default function ShedsOutbuildings() {
                 key={index}
                 className="gallery-item fade-in relative aspect-video overflow-hidden rounded-lg group"
               >
-                <img
-                  src={image.src}
+                <ResponsiveImage
+                  name={image.name}
                   alt={image.alt}
+                  width={800}
+                  height={450}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

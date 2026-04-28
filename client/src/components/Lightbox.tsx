@@ -2,7 +2,7 @@ import { useEffect, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface LightboxProps {
-  images: { src: string; alt: string }[];
+  images: { name: string; alt: string }[];
   currentIndex: number;
   isOpen: boolean;
   onClose: () => void;
@@ -88,11 +88,22 @@ export default function Lightbox({
 
       {/* Image */}
       <div className="relative z-10 max-w-[90vw] max-h-[90vh]" key={currentIndex}>
-        <img
-          src={current.src}
-          alt={current.alt}
-          className="lightbox-image max-w-full max-h-[85vh] object-contain rounded-lg"
-        />
+        <picture>
+          <source
+            type="image/avif"
+            srcSet={`/images/optimized/${current.name}-1600.avif 1600w, /images/optimized/${current.name}-1200.avif 1200w`}
+          />
+          <source
+            type="image/webp"
+            srcSet={`/images/optimized/${current.name}-1600.webp 1600w, /images/optimized/${current.name}-1200.webp 1200w`}
+          />
+          <img
+            src={`/images/optimized/${current.name}-1200.jpg`}
+            alt={current.alt}
+            className="lightbox-image max-w-full max-h-[85vh] object-contain rounded-lg"
+            loading="eager"
+          />
+        </picture>
         <p className="text-white/70 text-center text-sm mt-3">
           {current.alt} — {currentIndex + 1} / {images.length}
         </p>

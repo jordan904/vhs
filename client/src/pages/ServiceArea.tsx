@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, MapPin, CheckCircle } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const communities = [
@@ -37,9 +38,13 @@ export default function ServiceArea() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0">
-          <img
-            src="/images/hero-bg.jpg"
-            alt="Nova Scotia landscape"
+          <ResponsiveImage
+            name="hero-bg"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
@@ -92,8 +97,12 @@ export default function ServiceArea() {
 
               <div className="flex items-center gap-4 mb-8">
                 <img
-                  src="/images/flags.jpeg"
+                  src="/images/optimized/flags-400.jpg"
                   alt="Canadian and Nova Scotia flags"
+                  width={150}
+                  height={80}
+                  loading="lazy"
+                  decoding="async"
                   className="h-20 w-auto rounded shadow"
                 />
                 <div>

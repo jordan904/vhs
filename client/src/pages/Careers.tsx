@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { toast } from "sonner";
 import {
@@ -186,9 +187,13 @@ export default function Careers() {
         {/* Hero Section */}
         <section className="relative py-20 md:py-28 overflow-hidden">
           <div className="absolute inset-0">
-            <img
-              src="/images/hero-bg.jpg"
-              alt="Construction team at work"
+            <ResponsiveImage
+              name="hero-bg"
+              alt=""
+              width={1600}
+              height={900}
+              priority
+              sizes="100vw"
               className="w-full h-full object-cover hero-zoom"
             />
             <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
@@ -241,9 +246,13 @@ export default function Careers() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/images/hero-bg.jpg"
-            alt="Construction team at work"
+          <ResponsiveImage
+            name="hero-bg"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />

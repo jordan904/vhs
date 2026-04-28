@@ -5,6 +5,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Heart, MapPin, Wrench } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const values = [
@@ -45,9 +46,13 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/images/about-hero.jpg"
-            alt="Skilled craftsman at work"
+          <ResponsiveImage
+            name="about-hero"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,oklch(0.22_0.06_250/0.88)_0%,oklch(0.22_0.06_250/0.65)_100%)]" />
@@ -106,9 +111,12 @@ export default function About() {
             </div>
             <div className="relative fade-in">
               <div className="overflow-hidden rounded-lg shadow-xl">
-                <img
-                  src="/images/insulation.jpg"
-                  alt="Quality construction work"
+                <ResponsiveImage
+                  name="insulation"
+                  alt="Insulation installation in a Nova Scotia home"
+                  width={1200}
+                  height={800}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="w-full h-auto about-image-zoom"
                 />
               </div>
@@ -166,8 +174,12 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 fade-in">
               <img
-                src="/images/flags.jpeg"
+                src="/images/optimized/flags-400.jpg"
                 alt="Canadian and Nova Scotia flags"
+                width={400}
+                height={300}
+                loading="lazy"
+                decoding="async"
                 className="w-full max-w-md h-auto rounded-lg shadow-xl mx-auto"
               />
             </div>

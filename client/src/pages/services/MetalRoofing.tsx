@@ -31,6 +31,7 @@ import {
   CreditCard,
   X,
 } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
@@ -122,19 +123,19 @@ const faqs = [
 ];
 
 const galleryImages = [
-  { src: "/images/img_037a1c06ddef.jpg", alt: "Standing seam metal roof installation on residential home" },
-  { src: "/images/img_0e371c1b90e9.jpg", alt: "Aerial drone view of completed metal roof in Brookside, NS" },
-  { src: "/images/img_ec2ea89bf6be.jpg", alt: "Standing seam metal roofing detail and ridge cap" },
-  { src: "/images/img_9c5ed483a923.png", alt: "Commercial metal roofing and wall cladding" },
-  { src: "/images/img_304b008edcb1.jpg", alt: "Vinyl siding installation on residential home" },
-  { src: "/images/img_6ac484e66ff4.jpg", alt: "Vinyl siding close-up during installation" },
-  { src: "/images/img_ae71ce807cb4.jpg", alt: "Siding and eavestrough work on two-storey home" },
-  { src: "/images/img_bb20814515b3.jpg", alt: "Vinyl siding gable detail with decorative vent" },
-  { src: "/images/img_dbee0d1ea2c7.jpg", alt: "Complete siding installation on grey home exterior" },
-  { src: "/images/img_dd1091af7f20.jpg", alt: "Upper storey siding over brick facade" },
-  { src: "/images/img_284c881383f9.jpg", alt: "Metal siding and roofing on outbuilding" },
-  { src: "/images/img_15c984a7053e.jpg", alt: "Blow-in attic insulation installation" },
-  { src: "/images/img_e5f6e4d8623e.jpg", alt: "Insulation performance diagram showing summer and winter benefits" },
+  { name: "img_037a1c06ddef", alt: "Standing seam metal roof installation on residential home" },
+  { name: "img_0e371c1b90e9", alt: "Aerial drone view of completed metal roof in Brookside, NS" },
+  { name: "img_ec2ea89bf6be", alt: "Standing seam metal roofing detail and ridge cap" },
+  { name: "img_9c5ed483a923", alt: "Commercial metal roofing and wall cladding" },
+  { name: "img_304b008edcb1", alt: "Vinyl siding installation on residential home" },
+  { name: "img_6ac484e66ff4", alt: "Vinyl siding close-up during installation" },
+  { name: "img_ae71ce807cb4", alt: "Siding and eavestrough work on two-storey home" },
+  { name: "img_bb20814515b3", alt: "Vinyl siding gable detail with decorative vent" },
+  { name: "img_dbee0d1ea2c7", alt: "Complete siding installation on grey home exterior" },
+  { name: "img_dd1091af7f20", alt: "Upper storey siding over brick facade" },
+  { name: "img_284c881383f9", alt: "Metal siding and roofing on outbuilding" },
+  { name: "img_15c984a7053e", alt: "Blow-in attic insulation installation" },
+  { name: "img_e5f6e4d8623e", alt: "Insulation performance diagram showing summer and winter benefits" },
 ];
 
 export default function MetalRoofing() {
@@ -176,9 +177,13 @@ export default function MetalRoofing() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/img_037a1c06ddef.jpg"
-            alt="Professional roofing installation by Versatile Home Solutions"
+          <ResponsiveImage
+            name="img_037a1c06ddef"
+            alt=""
+            width={1600}
+            height={900}
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover hero-zoom"
           />
           <div
@@ -279,9 +284,12 @@ export default function MetalRoofing() {
             </div>
             <div className="fade-in">
               <div className="rounded-xl overflow-hidden shadow-lg">
-                <img
-                  src="/images/img_0e371c1b90e9.jpg"
-                  alt="Aerial view of completed metal roof by Versatile Home Solutions"
+                <ResponsiveImage
+                  name="img_0e371c1b90e9"
+                  alt="Aerial view of completed metal roof in the Annapolis Valley by Versatile Home Solutions"
+                  width={1200}
+                  height={800}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="w-full h-auto object-cover"
                 />
               </div>
@@ -310,12 +318,13 @@ export default function MetalRoofing() {
                     role="button"
                     aria-label={`View ${image.alt}`}
                   >
-                    <img
-                      src={image.src}
+                    <ResponsiveImage
+                      name={image.name}
                       alt={image.alt}
+                      width={800}
+                      height={450}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                       <Search className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -386,12 +395,21 @@ export default function MetalRoofing() {
           >
             <ChevronRight className="h-6 w-6" />
           </button>
-          <img
-            src={galleryImages[lightboxIndex].src}
-            alt={galleryImages[lightboxIndex].alt}
-            className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <picture onClick={(e) => e.stopPropagation()}>
+            <source
+              type="image/avif"
+              srcSet={`/images/optimized/${galleryImages[lightboxIndex].name}-1600.avif 1600w, /images/optimized/${galleryImages[lightboxIndex].name}-1200.avif 1200w`}
+            />
+            <source
+              type="image/webp"
+              srcSet={`/images/optimized/${galleryImages[lightboxIndex].name}-1600.webp 1600w, /images/optimized/${galleryImages[lightboxIndex].name}-1200.webp 1200w`}
+            />
+            <img
+              src={`/images/optimized/${galleryImages[lightboxIndex].name}-1200.jpg`}
+              alt={galleryImages[lightboxIndex].alt}
+              className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+            />
+          </picture>
         </div>
       )}
 
