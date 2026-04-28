@@ -19,6 +19,7 @@ import { createReadStream } from "node:fs";
 import { stat, mkdir, writeFile } from "node:fs/promises";
 import { dirname, extname, join, resolve } from "node:path";
 import { setTimeout as wait } from "node:timers/promises";
+import Beasties from "beasties";
 import { chromium, type Browser } from "playwright";
 
 const PORT = 4173;
@@ -178,7 +179,11 @@ function routeToOutputPath(route: string): string {
   return join(DIST_DIR, trimmed, "index.html");
 }
 
-async function prerenderRoute(browser: Browser, route: string): Promise<number> {
+async function prerenderRoute(
+  browser: Browser,
+  beasties: Beasties,
+  route: string,
+): Promise<{ bytes: number; inlinedCss: number }> {
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
   try {
     const url = `${BASE_URL}${route}`;
@@ -194,14 +199,34 @@ async function prerenderRoute(browser: Browser, route: string): Promise<number> 
      */
     await page.evaluate(CLEANUP_HEAD_SCRIPT);
 
-    const html = await page.content();
+    const rawHtml = await page.content();
+
+    /**
+     * Inline above-the-fold CSS so the first paint isn't blocked on the
+     * full ~135 KB CSS bundle. Beasties scans the rendered DOM, extracts
+     * only the rules that match elements actually in the page, inlines
+     * them in a <style> tag, and rewrites the main <link rel="stylesheet">
+     * to a media="print" onload swap that loads the rest asynchronously.
+     */
+    const html = await beasties.process(rawHtml);
+    const inlinedCss = measureInlinedCss(html);
+
     const outPath = routeToOutputPath(route);
     await mkdir(dirname(outPath), { recursive: true });
     await writeFile(outPath, html, "utf8");
-    return Buffer.byteLength(html, "utf8");
+    return { bytes: Buffer.byteLength(html, "utf8"), inlinedCss };
   } finally {
     await page.close();
   }
+}
+
+function measureInlinedCss(html: string): number {
+  const matches = html.match(/<style\b[^>]*>([\s\S]*?)<\/style>/gi);
+  if (!matches) return 0;
+  return matches.reduce((sum, block) => {
+    const inner = block.replace(/^<style\b[^>]*>/i, "").replace(/<\/style>$/i, "");
+    return sum + Buffer.byteLength(inner, "utf8");
+  }, 0);
 }
 
 async function main(): Promise<void> {
@@ -211,13 +236,37 @@ async function main(): Promise<void> {
   const server = await startServer();
   const browser = await chromium.launch({ headless: true });
 
+  /**
+   * Single Beasties instance reused across routes — it caches parsed
+   * stylesheets between calls. `path` points at the build output so it
+   * can read /assets/index-*.css off disk. `preload: 'media'` rewrites
+   * the main <link> to media="print" onload="this.media='all'" plus a
+   * <noscript> fallback, which is the cheapest async-CSS pattern.
+   */
+  const beasties = new Beasties({
+    path: resolve(DIST_DIR),
+    publicPath: "/",
+    preload: "media",
+    pruneSource: false,
+    mergeStylesheets: true,
+    inlineFonts: false,
+    preloadFonts: false,
+    fonts: false,
+    logLevel: "warn",
+  });
+
   let totalBytes = 0;
+  let totalInlined = 0;
   try {
     for (const route of ROUTES) {
-      const bytes = await prerenderRoute(browser, route);
+      const { bytes, inlinedCss } = await prerenderRoute(browser, beasties, route);
       totalBytes += bytes;
+      totalInlined += inlinedCss;
       const kb = (bytes / 1024).toFixed(1);
-      console.log(`  ${route.padEnd(40)} ${kb.padStart(7)} KB`);
+      const inlineKb = (inlinedCss / 1024).toFixed(1);
+      console.log(
+        `  ${route.padEnd(40)} ${kb.padStart(7)} KB  (inline CSS ${inlineKb.padStart(5)} KB)`,
+      );
     }
   } finally {
     await browser.close();
@@ -225,7 +274,9 @@ async function main(): Promise<void> {
   }
 
   const seconds = ((Date.now() - start) / 1000).toFixed(1);
-  console.log(`\nDone in ${seconds}s. Wrote ${ROUTES.length} HTML files (${(totalBytes / 1024).toFixed(0)} KB total).`);
+  console.log(
+    `\nDone in ${seconds}s. Wrote ${ROUTES.length} HTML files (${(totalBytes / 1024).toFixed(0)} KB total, ${(totalInlined / 1024).toFixed(0)} KB inline CSS).`,
+  );
 }
 
 void main().catch((err: unknown) => {
