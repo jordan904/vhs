@@ -26,13 +26,6 @@ const OUT_DIR = "client/public/images/optimized";
 const WIDTHS = [400, 800, 1200, 1600] as const;
 const FALLBACK_WIDTH = 800;
 
-const HERO_BASENAMES = new Set([
-  "hero-bg",
-  "contact-hero",
-  "about-hero",
-  "services-hero",
-]);
-
 const AVIF_QUALITY = 60;
 const WEBP_QUALITY = 75;
 const JPEG_FALLBACK_QUALITY = 78;
@@ -55,19 +48,22 @@ async function isOlderThan(target: string, source: string): Promise<boolean> {
 async function optimizeOne(srcPath: string, outDir: string): Promise<OptimizeResult> {
   const ext = extname(srcPath).toLowerCase();
   const name = basename(srcPath, ext);
-  const isHero = HERO_BASENAMES.has(name);
 
   const srcStat = await stat(srcPath);
-  const meta = await sharp(srcPath).metadata();
-  const sourceWidth = meta.width ?? FALLBACK_WIDTH;
 
   let outputs = 0;
   let totalOut = 0;
 
-  const widths = WIDTHS.filter((w) => w <= sourceWidth);
-  if (widths.length === 0) widths.push(Math.min(sourceWidth, WIDTHS[0]));
-
-  for (const width of widths) {
+  /**
+   * Always emit one variant per width per format, even if the source is
+   * smaller than the target width. With withoutEnlargement: true sharp
+   * caps output at source dimensions, so e.g. catio (782w source) and
+   * catio-1600.avif coexist as the same actual pixel content under
+   * different names. ResponsiveImage's <picture> srcset references all
+   * widths, so every URL must resolve or the browser shows a broken
+   * image instead of falling through to the JPEG fallback.
+   */
+  for (const width of WIDTHS) {
     const baseSharp = sharp(srcPath).resize({ width, withoutEnlargement: true });
 
     const avifPath = join(outDir, `${name}-${width}.avif`);
@@ -107,7 +103,6 @@ async function optimizeOne(srcPath: string, outDir: string): Promise<OptimizeRes
     totalOut += s.size;
   }
 
-  void isHero;
   return { source: srcPath, outputs, totalIn: srcStat.size, totalOut };
 }
 
