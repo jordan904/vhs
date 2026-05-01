@@ -84,7 +84,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 shrink-0">
               <img
-                src="/images/optimized/VHS_Logo-400.jpg"
+                src="/images/optimized/VHS_Logo-800.jpg"
                 alt="Versatile Home Solutions logo"
                 width={48}
                 height={48}
@@ -248,7 +248,7 @@ export default function Layout({ children }: LayoutProps) {
             <div className="lg:col-span-1">
               <Link href="/" className="flex items-center gap-3 mb-4">
                 <img
-                  src="/images/optimized/VHS_Logo-400.jpg"
+                  src="/images/optimized/VHS_Logo-800.jpg"
                   alt="Versatile Home Solutions logo"
                   width={48}
                   height={48}
