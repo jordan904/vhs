@@ -48,6 +48,7 @@ const ROUTES: string[] = [
   "/about",
   "/services",
   "/services/metal-roofing",
+  "/roofing",
   "/services/decks",
   "/services/sheds-outbuildings",
   "/services/fences",

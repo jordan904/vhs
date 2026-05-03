@@ -24,7 +24,6 @@ import { join, basename, extname } from "node:path";
 const SOURCE_DIR = "client/public/images";
 const OUT_DIR = "client/public/images/optimized";
 const WIDTHS = [400, 800, 1200, 1600] as const;
-const FALLBACK_WIDTH = 800;
 
 const AVIF_QUALITY = 60;
 const WEBP_QUALITY = 75;
@@ -87,20 +86,27 @@ async function optimizeOne(srcPath: string, outDir: string): Promise<OptimizeRes
       const s = await stat(webpPath);
       totalOut += s.size;
     }
-  }
 
-  const fallbackPath = join(outDir, `${name}-${FALLBACK_WIDTH}.jpg`);
-  if (await isOlderThan(fallbackPath, srcPath)) {
-    await sharp(srcPath)
-      .resize({ width: FALLBACK_WIDTH, withoutEnlargement: true })
-      .jpeg({ quality: JPEG_FALLBACK_QUALITY, mozjpeg: true })
-      .toFile(fallbackPath);
-    const s = await stat(fallbackPath);
-    totalOut += s.size;
-    outputs++;
-  } else {
-    const s = await stat(fallbackPath);
-    totalOut += s.size;
+    /**
+     * JPEG at every width too: legacy <img src> tags, favicon links,
+     * JSON-LD logo/image fields, and og:image meta all reference a
+     * specific width like name-400.jpg or name-1200.jpg directly.
+     * Generating a JPEG at every width keeps every such reference
+     * resolvable without forcing every consumer through <picture>.
+     */
+    const jpgPath = join(outDir, `${name}-${width}.jpg`);
+    if (await isOlderThan(jpgPath, srcPath)) {
+      await baseSharp
+        .clone()
+        .jpeg({ quality: JPEG_FALLBACK_QUALITY, mozjpeg: true })
+        .toFile(jpgPath);
+      const s = await stat(jpgPath);
+      totalOut += s.size;
+      outputs++;
+    } else {
+      const s = await stat(jpgPath);
+      totalOut += s.size;
+    }
   }
 
   return { source: srcPath, outputs, totalIn: srcStat.size, totalOut };
